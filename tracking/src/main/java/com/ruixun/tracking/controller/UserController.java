@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.entity.TrackingUser;
+import com.ruixun.tracking.entity.VO.Agent;
 import com.ruixun.tracking.entity.dto.UserParams;
 import com.ruixun.tracking.service.ITrackingMemberCostService;
 import com.ruixun.tracking.service.ITrackingUserService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -159,8 +161,42 @@ public class UserController {
         map.put("result", update);
         return ResultResponseUtil.ok().msg("已更新").data(map);
     }
-//
-//    public Result addAgent() {
-//
-//    }
+
+    //
+    @PostMapping("/info/addAgent")
+    @ApiOperation("信息接口1:添加代理")
+    public Result addAgent(@RequestBody Agent agent) {
+
+
+        LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
+        //校验数据是否为null
+        int count = 0;
+        queryWrapper.eq(TrackingUser::getAccount, agent.getAccount()).or().eq(TrackingUser::getCardId, agent.getCard_id());
+        int count1 = iTrackingUserService.count(queryWrapper);
+        if (count1 > 0) {
+            return ResultResponseUtil.error().msg("用户名或卡号已已存在").data(null);
+        }
+        //校验数据是否为null
+        TrackingUser trackingUser = new TrackingUser();
+        trackingUser.setAccount(agent.getAccount());
+        trackingUser.setCreatePerson("root");
+        trackingUser.setCreateTime(LocalDateTime.now());
+        if (agent.getProportion() != null) {
+            trackingUser.setUserType(1); //占成代理
+        } else {
+            trackingUser.setUserType(2); //返点代理
+        }
+        trackingUser.setUsername(agent.getName());
+        trackingUser.setRemark(agent.getRemark());
+        trackingUser.setCardId(agent.getCard_id());
+        trackingUser.setPhone(agent.getPhone());
+        boolean save = iTrackingUserService.save(trackingUser);
+        if (save) {
+            return ResultResponseUtil.ok().msg("操作成功").data(save);
+        }
+        return ResultResponseUtil.error().msg("操作失败").data(null);
+
+    }
+
+
 }

@@ -29,15 +29,15 @@ public class MemberAccountsController {
      * 3.会员帐目-下单详情  条件查询
      */
 //    public Result
-    @PostMapping(value = "/SelectByCondition")
-    @ApiOperation("会员账目 条件查询")
-    public Result SelectByCondition(@RequestBody MemberSelectCondition memberSelectCondition, Integer page, Integer size){
-        if(page==null){
-            page=1;
-        }
-        if(size==null){
-            size=10;
-        }
-        return trackingMemberCostService.selectByCondition(memberSelectCondition,page,size);
-    }
+//    @PostMapping(value = "/SelectByCondition")
+//    @ApiOperation("会员账目 条件查询")
+//    public Result SelectByCondition(@RequestBody MemberSelectCondition memberSelectCondition, Integer page, Integer size){
+//        if(page==null){
+//            page=1;
+//        }
+//        if(size==null){
+//            size=10;
+//        }
+//        return trackingMemberCostService.selectByCondition(memberSelectCondition,page,size);
+//    }
 }
