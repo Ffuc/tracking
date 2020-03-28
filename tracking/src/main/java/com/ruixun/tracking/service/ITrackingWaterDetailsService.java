@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author pig
@@ -17,8 +17,10 @@ import java.math.BigDecimal;
  */
 public interface ITrackingWaterDetailsService extends IService<TrackingWaterDetails> {
     /*
-             获得返点收益
+         获得返点收益
           */
     BigDecimal getRebatesEarnings(TrackingUser trackingUser);
+
+    BigDecimal getRebatesEarnings(String referrer);
 
 }

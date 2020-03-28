@@ -78,19 +78,26 @@ public class UserController {
         //返点收益和分摊费用另查
         Page<TrackingUser> page = new Page<>(userParams.getPage(), 10);
         IPage<Map<String, Object>> aa = iTrackingUserService.pageMaps(page, queryWrapper);
-//        for (int i = 0; i < aa.getRecords().size(); i++) {
-//            Map map = aa.getRecords().get(i);
-//
-//            BigDecimal rebatesEarnings = trackingWaterDetailsService.getRebatesEarnings(trackingUser); //二次查询  返点收益
-//            map.put("rebatesEarnings", rebatesEarnings);//返点收益
-//            BigDecimal sharingCost = costService.getSharingCost(trackingUser);
-//            map.put("sharingCost", sharingCost);//返点收益
-//            list.add(map);
-//        }
-//        BeanUtils.copyProperties(page, result);
-//        result.setRecords(list);
-//        return ResultResponseUtil.ok().msg("查询成功").data(result);
-        return null;
+        for (int i = 0; i < aa.getRecords().size(); i++) {
+            Map map = aa.getRecords().get(i);
+            Integer userType = (Integer) map.get("user_type");
+            String userName = (String) map.get("account");
+            if (userType == 1) { //占成代理
+                BigDecimal sharingCost = costService.getSharingCost(userName);
+                map.put("sharingCost", sharingCost);//分担消费
+                map.put("rebatesEarnings", "/");//返点收益
+            } else if (userType == 2) {  //返点代理
+                BigDecimal rebatesEarnings = trackingWaterDetailsService.getRebatesEarnings(userName); //二次查询  返点收益
+                map.put("rebatesEarnings", rebatesEarnings);//返点收益
+                map.put("sharingCost", "/");//分担消费
+            } else if (userType == 0) {  //会员
+                map.put("rebatesEarnings", "/");//返点收益
+                map.put("sharingCost", "/");//分担消费
+            } else {
+                return ResultResponseUtil.error().msg("查询失败,用户类型错误").data(null);
+            }
+        }
+        return ResultResponseUtil.ok().msg("查询成功").data(aa);
     }
 
     @PostMapping("/info/deletedMember")

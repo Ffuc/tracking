@@ -22,6 +22,9 @@ import java.util.List;
  */
 @Service
 public class TrackingWaterDetailsServiceImpl extends ServiceImpl<TrackingWaterDetailsMapper, TrackingWaterDetails> implements ITrackingWaterDetailsService {
+    /**
+     * 通过给定 代理人 ,自动查询到这个代理人下面会员的所有返点收益
+     */
     @Override
     public BigDecimal getRebatesEarnings(TrackingUser trackingUser) {
         BigDecimal bigDecimal = new BigDecimal(0); //不是代理2,返回0
@@ -37,4 +40,21 @@ public class TrackingWaterDetailsServiceImpl extends ServiceImpl<TrackingWaterDe
         }
         return bigDecimal;
     }
+
+    /**
+     * 通过给定 代理人 账号,自动查询到这个代理人下面会员的所有返点收益  警告!使用前需确认该代理的userType为2,是返点代理
+     */
+    @Override
+    public BigDecimal getRebatesEarnings(String referrer) {
+        BigDecimal bigDecimal = new BigDecimal(0); //不是代理2,返回0
+        LambdaQueryWrapper<TrackingWaterDetails> lam = new LambdaQueryWrapper<>();
+        lam.select(TrackingWaterDetails::getWashCodeAmount).eq(TrackingWaterDetails::getReferrer, referrer);
+        List<TrackingWaterDetails> list = list(lam);
+
+        for (int i = 0; i < list.size(); i++) {
+            bigDecimal = bigDecimal.add(list.get(i).getWashCodeAmount());
+        }
+        return bigDecimal;
+    }
+
 }
