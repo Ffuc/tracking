@@ -4,27 +4,20 @@ package com.ruixun.tracking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ruixun.tracking.common.utils.MapUtil;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.entity.TrackingUser;
-import com.ruixun.tracking.entity.TrackingWaterDetails;
 import com.ruixun.tracking.entity.dto.UserParams;
 import com.ruixun.tracking.service.ITrackingMemberCostService;
 import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Map;
 
 /**
@@ -56,7 +49,7 @@ public class UserController {
     ITrackingMemberCostService costService;
 
     @PostMapping("/info")
-    @ApiOperation("信息接口1:提供条件,获得对应的结果")
+    @ApiOperation("信息接口1-用户管理:提供条件,获得对应的结果")
     public Result getUserInfo(@RequestBody UserParams userParams) {
         if (userParams.getPage() == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
@@ -101,7 +94,7 @@ public class UserController {
     }
 
     @PostMapping("/info/deletedMember")
-    @ApiOperation("信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名")
+    @ApiOperation("信息接口1-已删代理:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码")
     public Result getUserStatisticsInfo(@RequestBody Map data) {
         if (data.get("page") == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
@@ -116,7 +109,7 @@ public class UserController {
         if (data.get("username") != null) {
             queryWrapper.eq(TrackingUser::getUsername, (String) data.get("username"));
         }
-        queryWrapper.eq(TrackingUser::getIsDelete, 1);//已被删除
+        queryWrapper.eq(TrackingUser::getUserType, 1).or().eq(TrackingUser::getUserType, 2).eq(TrackingUser::getIsDelete, 1);//已被删除的代理
         queryWrapper.select(TrackingUser::getReferrer, TrackingUser::getAccount, TrackingUser::getUsername, TrackingUser::getPhone, TrackingUser::getProportion, TrackingUser::getWashCodeRatio);
 
 
@@ -125,16 +118,31 @@ public class UserController {
         IPage<TrackingUser> page1 = iTrackingUserService.page(page, queryWrapper);
         return ResultResponseUtil.ok().msg("查询成功").data(page1);
     }
-//
-//
-//    @GetMapping("/info/deletedAgent")
-//    @ApiOperation("信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名")
-//    public Result getDeletedMemberInfo(@RequestBody Map data) {
-//
-//        iTrackingUserService
-//
-//
-//    }
+
+    @PostMapping("/info/deletedAgent")
+    @ApiOperation("信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码")
+    public Result getDeletedMemberInfo(@RequestBody Map data) {
+
+        if (data.get("page") == null) {
+            return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
+        }
+        LambdaQueryWrapper<TrackingUser> queryWrapper = new LambdaQueryWrapper<>();
+        if (data.get("referrer") != null) {
+            queryWrapper.eq(TrackingUser::getReferrer, (String) data.get("referrer"));
+        }
+        if (data.get("account") != null) {
+            queryWrapper.eq(TrackingUser::getAccount, (String) data.get("account"));
+        }
+        if (data.get("username") != null) {
+            queryWrapper.eq(TrackingUser::getUsername, (String) data.get("username"));
+        }
+        queryWrapper.eq(TrackingUser::getIsDelete, 1).eq(TrackingUser::getUserType, 0);//已被删除
+        queryWrapper.select(TrackingUser::getReferrer, TrackingUser::getAccount, TrackingUser::getUsername, TrackingUser::getCardId, TrackingUser::getUsername, TrackingUser::getPhone, TrackingUser::getWashCodeRatio);
+        Integer pageNum = (Integer) data.get("page");
+        Page<TrackingUser> page = new Page<>(pageNum, 10);
+        IPage<TrackingUser> page1 = iTrackingUserService.page(page, queryWrapper);
+        return ResultResponseUtil.ok().msg("查询成功").data(page1);
+    }
 
 
 }

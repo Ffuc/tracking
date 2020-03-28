@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  **/
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.ruixun.tracking_system.dao")
+@MapperScan("com.ruixun.tracking.dao")
 public class MybatisPlusConfig {
 
     @Bean
