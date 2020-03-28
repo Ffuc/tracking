@@ -9,6 +9,8 @@ import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.dto.GameSelectCondition;
 import com.ruixun.tracking.entity.dto.TrackingAgencyAccountsDto;
 
+import java.util.Map;
+
 
 /**
  * <p>
@@ -19,7 +21,8 @@ import com.ruixun.tracking.entity.dto.TrackingAgencyAccountsDto;
  * @since 2020-03-28
  */
 public interface ITrackingWaterService extends IService<TrackingWater> {
-    IPage<TrackingWater> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current);
+    IPage<Map<String, Object>> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current);
 
     Result selectLHByCondition(GameSelectCondition gameSelectCondition, Integer page, Integer size);
+    public IPage<Map<String, Object>> waterDetails(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current);
 }

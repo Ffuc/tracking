@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -94,7 +95,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
     }
 
     @Override
-    public IPage<TrackingWater> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
+    public IPage<Map<String, Object>> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
         QueryWrapper<TrackingWater> queryWrapper = new QueryWrapper<>();
         if (trackingAgencyAccountsDto == null) {
             IPage page = trackingWaterMapper.selectPage(new Page(1, 1), queryWrapper);
@@ -129,12 +130,21 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
                 TrackingWater::getModifiedResult);
         //分页查询
         Page<TrackingWater> trackingWaterPage = new Page<>(current, 1);
-        IPage<TrackingWater> trackingWaterPage1 = trackingWaterMapper.selectPage(trackingWaterPage, queryWrapper);
-        return trackingWaterPage1;
+        IPage<Map<String, Object>> mapIPage = this.pageMaps(trackingWaterPage, queryWrapper);
+        if (mapIPage!=null || mapIPage.getRecords()!=null){
+            for (Map<String, Object> record : mapIPage.getRecords()) {
+                record.put("ship_id",record.get("water_id").toString()
+                        .substring(record.get("water_id").toString().lastIndexOf("-"),
+                                record.get("water_id").toString().length()));
+
+            }
+        }
+
+        return mapIPage;
     }
 
 
-    public IPage<TrackingWater> waterDetails(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
+    public IPage<Map<String, Object>> waterDetails(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
         QueryWrapper<TrackingWater> queryWrapper = new QueryWrapper<>();
         if (trackingAgencyAccountsDto == null) {
             IPage page = trackingWaterMapper.selectPage(new Page(1, 1), queryWrapper);
@@ -161,8 +171,16 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
                 TrackingWater::getResult);
         //分页查询
         Page<TrackingWater> trackingWaterPage = new Page<>(current, 1);
-        IPage<TrackingWater> trackingWaterPage1 = trackingWaterMapper.selectPage(trackingWaterPage, queryWrapper);
-        return trackingWaterPage1;
+        IPage<Map<String, Object>> mapIPage = this.pageMaps(trackingWaterPage, queryWrapper);
+        if (mapIPage!=null || mapIPage.getRecords()!=null){
+            for (Map<String, Object> record : mapIPage.getRecords()) {
+                record.put("ship_id",record.get("water_id").toString()
+                        .substring(record.get("water_id").toString().lastIndexOf("-"),
+                                record.get("water_id").toString().length()));
+
+            }
+        }
+        return mapIPage;
     }
 
 
