@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,10 +18,10 @@ import java.util.Date;
 public class GameSelectCondition implements Serializable {
     //开始时间
     @ApiModelProperty("开始时间")
-    private Date beginTime;
+    private LocalDateTime beginTime;
     //结束时间
     @ApiModelProperty("结束时间")
-    private Date endTime;
+    private LocalDateTime endTime;
     //桌号
     @ApiModelProperty("桌号")
     private String tableId;

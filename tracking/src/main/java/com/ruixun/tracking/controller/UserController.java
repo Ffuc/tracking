@@ -2,6 +2,7 @@ package com.ruixun.tracking.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruixun.tracking.common.utils.Result;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -115,7 +117,7 @@ public class UserController {
 
         Integer pageNum = (Integer) data.get("page");
         Page<TrackingUser> page = new Page<>(pageNum, 10);
-        IPage<TrackingUser> page1 = iTrackingUserService.page(page, queryWrapper);
+        IPage<Map<String, Object>> page1 = iTrackingUserService.pageMaps(page, queryWrapper);
         return ResultResponseUtil.ok().msg("查询成功").data(page1);
     }
 
@@ -140,8 +142,23 @@ public class UserController {
         queryWrapper.select(TrackingUser::getReferrer, TrackingUser::getAccount, TrackingUser::getUsername, TrackingUser::getCardId, TrackingUser::getUsername, TrackingUser::getPhone, TrackingUser::getWashCodeRatio);
         Integer pageNum = (Integer) data.get("page");
         Page<TrackingUser> page = new Page<>(pageNum, 10);
-        IPage<TrackingUser> page1 = iTrackingUserService.page(page, queryWrapper);
+        IPage<Map<String, Object>> page1 = iTrackingUserService.pageMaps(page, queryWrapper);
         return ResultResponseUtil.ok().msg("查询成功").data(page1);
+    }
+
+    @PostMapping("/info/regainMember")
+    @ApiOperation("信息接口1:提供条件,account账号 可以从删除状态还原账号")
+    public Result regainMember(@RequestBody Map data) {
+        LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
+        if (data.get("account") != null) {
+            queryWrapper.eq(TrackingUser::getAccount, (String) data.get("account"));
+        }
+        queryWrapper.eq(TrackingUser::getAccount, data.get("account")).eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 0);//已被删除
+
+        boolean update = iTrackingUserService.update(queryWrapper);
+        Map map = new HashMap();
+        map.put("result", update);
+        return ResultResponseUtil.ok().msg("已更新").data(map);
     }
 
 
