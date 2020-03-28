@@ -22,6 +22,7 @@ import java.util.List;
  */
 @Service
 public class TrackingWaterDetailsServiceImpl extends ServiceImpl<TrackingWaterDetailsMapper, TrackingWaterDetails> implements ITrackingWaterDetailsService {
+
     @Override
     public BigDecimal getRebatesEarnings(TrackingUser trackingUser) {
         BigDecimal bigDecimal = new BigDecimal(0); //不是代理2,返回0
@@ -35,6 +36,9 @@ public class TrackingWaterDetailsServiceImpl extends ServiceImpl<TrackingWaterDe
         for (int i = 0; i < list.size(); i++) {
             bigDecimal = bigDecimal.add(list.get(i).getWashCodeAmount());
         }
+
+
         return bigDecimal;
     }
+
 }

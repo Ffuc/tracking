@@ -3,26 +3,24 @@ package com.ruixun.tracking.entity.dto;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
-import org.joda.time.DateTime;
 
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * @author suitao
- * @description GameController的查询DTO
+ * @description MemberController的查询DTO
  */
 @Data
-@ApiModel("龙虎和局查询DTO")
-public class GameSelectCondition implements Serializable {
+@ApiModel("会员账目查询DTO")
+public class MemberSelectCondition implements Serializable {
     //开始时间
     @ApiModelProperty("开始时间")
-    private Date beginTime;
+    private LocalDateTime beginTime;
     //结束时间
     @ApiModelProperty("结束时间")
-    private Date endTime;
+    private LocalDateTime endTime;
     //桌号
     @ApiModelProperty("桌号")
     private String tableId;
@@ -36,7 +34,7 @@ public class GameSelectCondition implements Serializable {
     @ApiModelProperty("注码")
     private String noteCode;
     //洗码号
-    @ApiModelProperty("洗码号")
-    private String codeId;
+    @ApiModelProperty("下注方式")
+    private String betWay;
 
 }

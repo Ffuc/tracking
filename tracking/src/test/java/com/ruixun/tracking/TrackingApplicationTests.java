@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class TrackingApplicationTests extends BaseTest {
+public class TrackingApplicationTests {
     @Autowired
     IDictionaryItemService dictionaryItem;
 
