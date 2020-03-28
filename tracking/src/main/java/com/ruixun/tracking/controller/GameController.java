@@ -26,21 +26,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class GameController {
     @Autowired
     private ITrackingWaterService iTrackingWaterService;
-/**
- *1.龙湖和局-条件查询
- */
+
+    /**
+     * 1.龙湖和局-条件查询
+     */
     @PostMapping(value = "/SelectByCondition")
     @ApiOperation("龙虎和局-条件查询")
-    public Result SelectByCondition(@RequestBody GameSelectCondition gameSelectCondition, Integer page, Integer size){
-        if(page==null){
-            page=1;
+    public Result SelectByCondition(@RequestBody GameSelectCondition gameSelectCondition, Integer page, Integer size) {
+        if (page == null) {
+            page = 1;
         }
-        if(size==null){
-            size=10;
+        if (size == null) {
+            size = 10;
         }
         //设值游戏类型为龙虎和局
-        gameSelectCondition.setGameType("1");
-        return iTrackingWaterService.selectLHByCondition(gameSelectCondition,page,size);
+        return iTrackingWaterService.selectLHByCondition(gameSelectCondition, page, size);
     }
 
 }
