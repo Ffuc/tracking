@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/tracking/game")
 @Api("游戏")
+/*hellosuitao*/
 public class GameController {
     @Autowired
     private ITrackingWaterService iTrackingWaterService;
