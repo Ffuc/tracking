@@ -124,7 +124,6 @@ public class UserController {
     @PostMapping("/info/deletedAgent")
     @ApiOperation("信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码")
     public Result getDeletedMemberInfo(@RequestBody Map data) {
-
         if (data.get("page") == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
         }
