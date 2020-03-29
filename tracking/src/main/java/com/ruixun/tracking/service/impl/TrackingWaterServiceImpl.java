@@ -147,7 +147,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
     public IPage<Map<String, Object>> waterDetails(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
         QueryWrapper<TrackingWater> queryWrapper = new QueryWrapper<>();
         if (trackingAgencyAccountsDto == null) {
-            IPage page = trackingWaterMapper.selectPage(new Page(1, 1), queryWrapper);
+            IPage page = trackingWaterMapper.selectPage(new Page(current, 1), queryWrapper);
             return page;
         }
         //输入时间
