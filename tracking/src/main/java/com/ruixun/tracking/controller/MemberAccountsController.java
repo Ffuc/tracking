@@ -9,6 +9,8 @@ import com.ruixun.tracking.entity.dto.MemberSelectCondition;
 import com.ruixun.tracking.entity.dto.MemberSelectCondition2;
 
 import com.ruixun.tracking.entity.pig.BigMember;
+import com.ruixun.tracking.entity.pig.BigWater;
+import com.ruixun.tracking.service.IDictionaryItemService;
 import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
 import com.ruixun.tracking.service.ITrackingWaterService;
@@ -36,6 +38,8 @@ public class MemberAccountsController {
     private ITrackingUserService trackingUserService;
     @Autowired
     private ITrackingWaterService trackingWaterService;
+    @Autowired
+    private IDictionaryItemService iDictionaryItemService;
 
     /**
      * 1.会员账目 条件查询
@@ -114,9 +118,9 @@ public class MemberAccountsController {
         return ResultResponseUtil.ok().msg("所有数据").data(map);
     }
 
-//
-//    @PostMapping(value = "/member/SelectByCondition")
-//    @ApiOperation("会员账目 条件查询")
+
+    @PostMapping(value = "/member/SelectByCondition")
+    @ApiOperation("会员账目 条件查询")
     public Result memberSelectByCondition(@RequestBody MemberSelectCondition2 memberSelectCondition2, Integer page, Integer size) {
         LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
         String tableType = "";
@@ -127,7 +131,7 @@ public class MemberAccountsController {
         if (size == null) {
             size = 10;
         }
-        if (memberSelectCondition2.getNoteCode() != null) {//注码(币种)方式一样
+        if (memberSelectCondition2.getNoteCode() != null) {                     //注码(币种)方式一样
             lambdaQueryWrapper_water.eq(TrackingWater::getMoneyType, memberSelectCondition2.getNoteCode());
         }
         if (memberSelectCondition2.getBetWay() != null) {
@@ -148,16 +152,28 @@ public class MemberAccountsController {
         if (memberSelectCondition2.getTableId() != null) {   //桌号,靴号
             lambdaQueryWrapper_water.le(TrackingWater::getWaterId, memberSelectCondition2.getTableId());
         }
-        if (memberSelectCondition2.getTableId() != null) {   //桌号,靴号
-            lambdaQueryWrapper_water.le(TrackingWater::getWaterId, memberSelectCondition2.getTableId());
+        if (memberSelectCondition2.getBootId() != null) {   //桌号,靴号
+            lambdaQueryWrapper_water.le(TrackingWater::getBoots, memberSelectCondition2.getBootId());
         }
-        if (memberSelectCondition2.getTableId() != null) {   //桌号,靴号
-            lambdaQueryWrapper_water.le(TrackingWater::getWaterId, memberSelectCondition2.getTableId());
+        List<TrackingWater> list = trackingWaterService.list(lambdaQueryWrapper_water);
+        List<Map> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            TrackingWater trackingWater = list.get(i);
+            BigWater bigWater = new BigWater(trackingWater.getWaterId(), trackingWaterService, trackingWaterDetailsService);
+            Map all = bigWater.getAll();
+            String[] results = ((String) all.get("result")).split(",");
+            String game_result = "";
+            for (int j = 0; j < results.length; j++) {
+                String cn = iDictionaryItemService.getGameCN("game_result", Integer.valueOf(results[j]));
+                game_result += "," + cn;
+            }
+            all.put("result", game_result);
+            result.add(all);
         }
 
         Map map = new HashMap();
-        map.put("records", null);
-        map.put("total", null);
+        map.put("records", result);
+        map.put("total", result.size());
         map.put("size", size);
         map.put("current", page);
         map.put("pages", 1);

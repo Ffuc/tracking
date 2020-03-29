@@ -16,4 +16,6 @@ import com.ruixun.tracking.entity.DictionaryItem;
 public interface IDictionaryItemService extends IService<DictionaryItem> {
     Result getGameType();
 
+    String getGameCN(String code, int index);
+
 }

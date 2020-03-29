@@ -31,4 +31,12 @@ public class DictionaryItemServiceImpl extends ServiceImpl<DictionaryItemMapper,
         List<DictionaryItem> list = list(queryWrapper);
         return ResultResponseUtil.ok().msg("查询成功").data(list);
     }
+
+    @Override
+    public String getGameCN(String code, int index) {
+        QueryWrapper<DictionaryItem> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(DictionaryItem::getDicCode, code).eq(DictionaryItem::getCodeIndex, index);
+        DictionaryItem one = getOne(queryWrapper);
+        return one.getIndexNameCn();
+    }
 }
