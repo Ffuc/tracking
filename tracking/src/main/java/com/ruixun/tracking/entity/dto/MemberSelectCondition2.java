@@ -1,6 +1,7 @@
 package com.ruixun.tracking.entity.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
  *
  * @Date: 2020-03-29 10:00
  **/
+@Data
 public class MemberSelectCondition2 {
     //开始时间
     @ApiModelProperty("开始时间")
@@ -23,7 +25,10 @@ public class MemberSelectCondition2 {
     private String tableId;
     //靴号
     @ApiModelProperty("靴号")
-    private String bootId;
+    private Integer bootId;
+
+    @ApiModelProperty("铺号")
+    private Integer waterId;
     //(游戏)类型
     @ApiModelProperty("游戏类型")
     private Integer gameType;

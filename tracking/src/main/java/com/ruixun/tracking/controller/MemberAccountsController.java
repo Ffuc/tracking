@@ -7,6 +7,7 @@ import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
 import com.ruixun.tracking.entity.dto.MemberSelectCondition;
 import com.ruixun.tracking.entity.dto.MemberSelectCondition2;
+
 import com.ruixun.tracking.entity.pig.BigMember;
 import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
@@ -116,20 +117,49 @@ public class MemberAccountsController {
     }
 
 
-    @PostMapping(value = "/member/SelectByCondition")
-    @ApiOperation("会员账目 条件查询")
-    public Result memberSelectByCondition(@RequestBody MemberSelectCondition2 memberSelectCondition2, Integer page, Integer size) {
-
-
-        Map map = new HashMap();
-        map.put("records", null);
-        map.put("total", null);
-        map.put("size", size);
-        map.put("current", page);
-        map.put("pages", 1);
-        map.put("searchCount", true);
-        return ResultResponseUtil.ok().msg("所有数据").data(map);
-    }
+//    @PostMapping(value = "/member/SelectByCondition")
+//    @ApiOperation("会员账目 条件查询")
+//    public Result memberSelectByCondition(@RequestBody MemberSelectCondition2 memberSelectCondition2, Integer page, Integer size) {
+//        LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
+//        String tableType = "";
+//        Integer gameType = memberSelectCondition2.getGameType();
+//        if (page == null) {
+//            page = 1;
+//        }
+//        if (size == null) {
+//            size = 10;
+//        }
+//        if (memberSelectCondition2.getNoteCode() != null) {//注码(币种)方式一样
+//            lambdaQueryWrapper_water.eq(TrackingWater::getMoneyType, memberSelectCondition2.getNoteCode());
+//        }
+//        if (memberSelectCondition2.getBetWay() != null) {
+//            lambdaQueryWrapper_water.eq(TrackingWater::getBetWay, memberSelectCondition2.getBetWay());  //下注方式一样
+//        }
+//        if (gameType != null) {
+//            lambdaQueryWrapper_water.eq(TrackingWater::getGameType, memberSelectCondition2.getGameType());  //游戏类别一样
+//            if (gameType == 1) {
+//                tableType = "龙虎";
+//            } else if (gameType == 0) {
+//                tableType = "百家乐";
+//            }
+//        }
+//        if (memberSelectCondition2.getBeginTime() != null)
+//            lambdaQueryWrapper_water.ge(TrackingWater::getCreateTime, memberSelectCondition2.getBeginTime());
+//        if (memberSelectCondition2.getEndTime() != null)
+//            lambdaQueryWrapper_water.le(TrackingWater::getCreateTime, memberSelectCondition2.getEndTime());
+//        if (memberSelectCondition2.getTableId() != null) {   //桌号,靴号
+//
+//        }
+//
+//        Map map = new HashMap();
+//        map.put("records", null);
+//        map.put("total", null);
+//        map.put("size", size);
+//        map.put("current", page);
+//        map.put("pages", 1);
+//        map.put("searchCount", true);
+//        return ResultResponseUtil.ok().msg("所有数据").data(map);
+//    }
 
 
 }
