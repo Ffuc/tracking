@@ -16,6 +16,7 @@ import com.ruixun.tracking.entity.TrackingTable;
 import com.ruixun.tracking.entity.TrackingUser;
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
+import com.ruixun.tracking.service.IDictionaryItemService;
 import com.ruixun.tracking.service.ITrackingTableService;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,12 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
     private TrackingTableMapper tableMapper;
     @Autowired
     private TrackingWaterMapper waterMapper;
-    @ApiModelProperty
+    @Autowired
     private TrackingUserMapper userMapper;
-
     @Autowired
     private TrackingWaterDetailsMapper waterDetailsMapper;
+    @Autowired
+    private IDictionaryItemService dictionaryItemService;
 
     @Override
     public Result findTablesInfo(TrackingWater trackingWater, Integer page, Integer size) {
@@ -123,42 +125,42 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
             /*1 table类型放入map*/
             QueryWrapper<TrackingTable> wrapper_table = new QueryWrapper<TrackingTable>();
             wrapper_table.lambda().eq(TrackingTable::getTableId, tablesId.get(i));
-            map.put("tableType", tableMapper.selectOne(wrapper_table).getTableType());
+            map.put("tableType", dictionaryItemService.getGameCN("table",tableMapper.selectOne(wrapper_table).getTableType()));
             /*2. tableId 放入map  */
             map.put("tableId", tablesId.get(i));
             /*3. 总压放入map*/
             BigDecimal zongYa = new BigDecimal(0);
             for (int j = 0; j < trackingWaterDetails.size(); j++) {
-                zongYa.add(trackingWaterDetails.get(j).getBetMoney());
+                zongYa = zongYa.add(trackingWaterDetails.get(j).getBetMoney());
             }
             map.put("vipZongYa", zongYa);
             /*4. 总输赢放入map*/
             BigDecimal zongShuYing = new BigDecimal(0);
             //遍历流水表，查询桌的总输赢
             for (int k = 0; k < trackingWaters.size(); k++) {
-                zongShuYing.add(trackingWaters.get(k).getProfit());
+                zongShuYing=zongShuYing.add(trackingWaters.get(k).getProfit());
             }
             map.put("vipZongShuYing", zongShuYing);
             /*5. 和放入map*/
             BigDecimal he = new BigDecimal(0);
             for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
-                if(trackingWater_temp.get(i1).getResult()=="2"){
-                    he.add(trackingWaterDetails.get(i1).getWinMoney());
+                if(trackingWaterDetails.get(i1).getWinMoney()!=null&&trackingWaterDetails.get(i1).getBetTarget()==2){
+                    he=he.add(trackingWaterDetails.get(i1).getWinMoney());
                 }
             }
             map.put("he", he);
             /*6. 对子放入map*/
             BigDecimal duizi = new BigDecimal(0);
             for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
-                if(trackingWater_temp.get(i1).getResult()=="4"||trackingWater_temp.get(i).getResult()=="5"){
-                    duizi.add(trackingWaterDetails.get(i1).getWinMoney());
+                if((trackingWaterDetails.get(i1).getBetTarget()==4)||(trackingWaterDetails.get(i1).getBetTarget()==5)&&(trackingWaterDetails.get(i1).getWinMoney()!=null)){
+                    duizi= duizi.add(trackingWaterDetails.get(i1).getWinMoney());
                 }
             }
             map.put("duiZi", duizi);
             /*7. 洗码量放入map*/
             BigDecimal xiMaLiang = new BigDecimal(0);
             for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
-                xiMaLiang.add(trackingWaterDetails.get(i1).getWashCodeAmount());
+                xiMaLiang=xiMaLiang.add(trackingWaterDetails.get(i1).getWashCodeAmount());
             }
             /*8. 放入公司盈亏*/
             map.put("gongSiYingKui", -zongShuYing.doubleValue());
@@ -171,7 +173,7 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
         PageInfo<Map<String, Object>> tablesInfo = new PageInfo<Map<String, Object>>(resultMapList);
         HashMap<String, Object> map = new HashMap<>();
         map.put("tablesInfo",tablesInfo);
-        map.put("wrapper_water",wrapper_water);
+        map.put("wrapper_water",tableId_waterIds);
         return ResultResponseUtil.ok().data(map);
     }
 
@@ -199,7 +201,7 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
             List<TrackingWaterDetails> trackingWaterDetails = waterDetailsMapper.selectList(wrapper_TrackingWaterDetails);
             BigDecimal zongYa = new BigDecimal(0);
             for (int j = 0; j < trackingWaterDetails.size(); j++) {
-                zongYa.add(trackingWaterDetails.get(j).getBetMoney());
+                zongYa=zongYa.add(trackingWaterDetails.get(j).getBetMoney());
             }
             table_map.put("vipZongYa", zongYa);
             /*6. 放入公司盈亏*/
@@ -211,7 +213,7 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
             /*7. 放入保险*/
             table_map.put("insurance",water.getInsurance());
             /*8. 放入开牌结果*/
-            table_map.put("result",water.getResult());
+            table_map.put("result",dictionaryItemService.getGameCN("game_result",Integer.valueOf(water.getResult())));
             /*9. 放入参与会员*/
             String vipAccounts = "";
             for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
@@ -231,8 +233,8 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
                 map.put("betTarget",trackingWaterDetails.get(i1).getBetTarget());
                 map.put("insurance",trackingWaterDetails.get(i1).getInsurance());
                 map.put("zongYing",trackingWaterDetails.get(i1).getWinMoney());
-                map.put("money_type",trackingWater.getMoneyType());
-                map.put("bet_way",trackingWater.getBetWay());
+                map.put("money_type",dictionaryItemService.getGameCN("currency",trackingWater.getMoneyType()));
+                map.put("bet_way",dictionaryItemService.getGameCN("bet",trackingWater.getBetWay()));
                 table_list.add(map);
             }
             table_map.put("table_details",table_list);
