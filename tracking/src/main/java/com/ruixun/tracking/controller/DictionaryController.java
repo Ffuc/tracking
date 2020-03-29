@@ -29,7 +29,7 @@ public class DictionaryController {
     @Autowired
     IDictionaryItemService dictionaryItemService;
 
-    //service层写一个可以查询根据类型得到所有子元素的查询,数据存一个list<dictionary> 的集合返回即可,没有则返回500,空
+//    service层写一个可以查询根据类型得到所有子元素的查询,数据存一个list<dictionary> 的集合返回即可,没有则返回500,空
     @ApiOperation("首页-信息接口1:查询所有游戏类别")
     @GetMapping("/type/game")
     public Result getGameType() {
@@ -44,31 +44,31 @@ public class DictionaryController {
         return ResultResponseUtil.ok().msg("查询完毕").data(list);
     }
 
-    @ApiOperation("首页-信息接口1:查询下注方式")
+    @ApiOperation("首页-信息接口1:查询金钱类别")
     @GetMapping("/type/bet")
     public Result getBetType() {
         List<DictionaryItem> list = dictionaryItemService.getTypeList("currency");
         return ResultResponseUtil.ok().msg("查询完毕").data(list);
     }
 
-    @ApiOperation("首页-信息接口1:查询金钱类别")
+    @ApiOperation("首页-信息接口1:查询下注方式")
     @GetMapping("/type/money")
     public Result getMoneyType() {
         List<DictionaryItem> list = dictionaryItemService.getTypeList("bet");
         return ResultResponseUtil.ok().msg("查询完毕").data(list);
     }
 
-    @PostMapping("/info")
-    @ApiOperation("首页-信息接口1:对应的字典:提供code,index(对应下标)")
-    public Result getType2(@RequestBody String data) {
-        JSONObject jsonObject = JSON.parseObject(data);
-        String code = (String) jsonObject.get("code");
-        Integer index = Integer.valueOf((String) jsonObject.get("index"));
-        LambdaQueryWrapper<DictionaryItem> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        lambdaQueryWrapper.select(DictionaryItem::getIndexNameCn).eq(DictionaryItem::getDicCode, code).eq(DictionaryItem::getCodeIndex, index);
-        DictionaryItem one = dictionaryItemService.getOne(lambdaQueryWrapper);
-        return ResultResponseUtil.ok().msg("查询完毕").data(one);
-    }
+//    @PostMapping("/info")
+//    @ApiOperation("首页-信息接口1:对应的字典:提供code,index(对应下标)")
+//    public Result getType2(@RequestBody String data) {
+//        JSONObject jsonObject = JSON.parseObject(data);
+//        String code = (String) jsonObject.get("code");
+//        Integer index = Integer.valueOf((String) jsonObject.get("index"));
+//        LambdaQueryWrapper<DictionaryItem> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+//        lambdaQueryWrapper.select(DictionaryItem::getIndexNameCn).eq(DictionaryItem::getDicCode, code).eq(DictionaryItem::getCodeIndex, index);
+//        DictionaryItem one = dictionaryItemService.getOne(lambdaQueryWrapper);
+//        return ResultResponseUtil.ok().msg("查询完毕").data(one);
+//    }
 
 
 }

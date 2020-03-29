@@ -54,9 +54,6 @@ public class TrackingWaterDetails implements Serializable {
     @ApiModelProperty(value = "下注时间")
     private LocalDateTime betTime;
 
-    @ApiModelProperty(value = "游戏类别")
-    private Integer gameType;
-
     @ApiModelProperty(value = "金钱类别")
     private Integer moneyType;
 

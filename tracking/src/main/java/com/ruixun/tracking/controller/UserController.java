@@ -150,13 +150,27 @@ public class UserController {
 
     @PostMapping("/info/regainMember")
     @ApiOperation(value = "信息接口1:提供条件,account账号 可以从删除状态还原账号", notes = "account账号")
-    public Result regainMember(@RequestBody Map data) {
+    public Result regainMember(String account) {
         LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
-        if (data.get("account") != null) {
-            queryWrapper.eq(TrackingUser::getAccount, (String) data.get("account"));
+        if (account != null) {
+            queryWrapper.eq(TrackingUser::getAccount, account);
         }
-        queryWrapper.eq(TrackingUser::getAccount, data.get("account")).eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 0);//已被删除
+        queryWrapper.eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 0);//已被删除
 
+        boolean update = iTrackingUserService.update(queryWrapper);
+        Map map = new HashMap();
+        map.put("result", update);
+        return ResultResponseUtil.ok().msg("已更新").data(map);
+    }
+
+    @PostMapping("/info/deleteMember")
+    @ApiOperation(value = "信息接口1:提供条件,account账号  删除账号", notes = "account账号")
+    public Result deleteMember(String account) {
+        LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
+        if (account != null) {
+            queryWrapper.eq(TrackingUser::getAccount, account);
+        }
+        queryWrapper.eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 1);//已被删除
         boolean update = iTrackingUserService.update(queryWrapper);
         Map map = new HashMap();
         map.put("result", update);
@@ -166,8 +180,6 @@ public class UserController {
     @PostMapping("/info/addAgent")
     @ApiOperation("信息接口1:添加代理")
     public Result addAgent(@RequestBody Agent agent) {
-
-
         LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
         //校验数据是否为null
         int count = 0;

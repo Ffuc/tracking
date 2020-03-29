@@ -47,6 +47,7 @@ public class TrackingWater implements Serializable {
 
     @ApiModelProperty(value = "结束时间(开牌时间)")
     private LocalDateTime endTime;
+
     @ApiModelProperty(value = "此局保险")
 
     private BigDecimal insurance;
@@ -86,5 +87,8 @@ public class TrackingWater implements Serializable {
 
     @ApiModelProperty(value = "盈亏")
     private BigDecimal profit;
+    @ApiModelProperty(value = "洗码费")
+    private BigDecimal washCodeMoney;
+
 
 }

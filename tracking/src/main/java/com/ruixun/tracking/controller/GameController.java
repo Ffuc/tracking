@@ -45,8 +45,6 @@ public class GameController {
     /**
      * 1.龙湖和局-条件查询
      */
-    @PostMapping(value = "/SelectByCondition")
-    @ApiOperation("龙虎和局-条件查询 还在编写")
     public Result SelectByCondition(@RequestBody GameSelectCondition memberSelectCondition) {
         if (memberSelectCondition.getPage() == null) {
             memberSelectCondition.setPage(1);
@@ -82,11 +80,10 @@ public class GameController {
         List<TrackingWaterDetails> list = iTrackingWaterService.list(lambdaQueryWrapper_detail);
         //清除重复账号操作
         List<String> listAccount = new ArrayList<>();
-        List<String> accounts = new ArrayList<>();
         list.forEach(i -> listAccount.add(i.getAccount()));
         HashSet h = new HashSet(listAccount);
-        accounts.clear();
-        accounts.addAll(h);
+        listAccount.clear();
+        listAccount.addAll(h);
         //清除重复账号操作 -end
 //        for (int i = 0; i < accounts.size(); i++) {
 //            BigMember bigMember = new BigMember(accounts.get(i), iTrackingWaterService, iTrackingWaterDetailsService, iTrackingUserService);
@@ -126,8 +123,6 @@ public class GameController {
         if (gameSelectCondition.getCodeId() != null)
             lambdaUpdateWrapper.eq(TrackingWaterDetails::getAccount, gameSelectCondition.getCodeId());
         //设值游戏类型为龙虎和局
-
-
         return iTrackingWaterService.selectLHByCondition(gameSelectCondition, page, size);
     }
 

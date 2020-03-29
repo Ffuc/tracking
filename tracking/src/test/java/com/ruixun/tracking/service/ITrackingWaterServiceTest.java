@@ -7,18 +7,29 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class ITrackingWaterServiceTest {
 
 
     @Test
     void test1() {
-        List<String> list = Arrays.asList("oo", "11", "00", "oo");
+        List<String> list = new ArrayList<>();
+        list.add("o");
+        list.add("o");
+        list.add("o");
+        list.add("o1");
+        list.forEach(i -> System.out.print(i));
+        System.out.println();
+        //去重操作
+
         HashSet h = new HashSet(list);
         list.clear();
         list.addAll(h);
-        list.forEach(i -> System.out.println(i));
+        //去重操作
+
+        list.forEach(i -> System.out.print(i));
+
 
     }
 }
