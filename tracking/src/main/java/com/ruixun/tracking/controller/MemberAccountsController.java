@@ -6,6 +6,7 @@ import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
 import com.ruixun.tracking.entity.dto.MemberSelectCondition;
+import com.ruixun.tracking.entity.dto.MemberSelectCondition2;
 import com.ruixun.tracking.entity.pig.BigMember;
 import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
@@ -18,10 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Program: tracking_system
@@ -60,14 +58,14 @@ public class MemberAccountsController {
         if (size == null) {
             size = 10;
         }
-        if (memberSelectCondition.getNoteCode() != null) {
-            lambdaQueryWrapper_detail.eq(TrackingWaterDetails::getMoneyType, memberSelectCondition.getNoteCode());  //注码(币种)方式一样
+        if (memberSelectCondition.getNoteCode() != null) {//注码(币种)方式一样
+            lambdaQueryWrapper_water.eq(TrackingWater::getMoneyType, memberSelectCondition.getNoteCode());
         }
         if (memberSelectCondition.getBetWay() != null) {
-            lambdaQueryWrapper_detail.eq(TrackingWaterDetails::getBetWay, memberSelectCondition.getBetWay());  //下注方式一样
+            lambdaQueryWrapper_water.eq(TrackingWater::getBetWay, memberSelectCondition.getBetWay());  //下注方式一样
         }
         if (gameType != null) {
-            lambdaQueryWrapper_detail.eq(TrackingWaterDetails::getGameType, memberSelectCondition.getGameType());  //游戏类别一样
+            lambdaQueryWrapper_water.eq(TrackingWater::getGameType, memberSelectCondition.getGameType());  //游戏类别一样
             if (gameType == 1) {
                 tableType = "龙虎";
             } else if (gameType == 0) {
@@ -106,7 +104,32 @@ public class MemberAccountsController {
                 all.put("gameType", tableType);
             data.add(all);
         }
+        Map map = new HashMap();
 
-        return ResultResponseUtil.ok().msg("所有数据").data(data);
+        map.put("records", data);
+        map.put("total", accounts.size());
+        map.put("size", accounts.size());
+        map.put("current", 1);
+        map.put("pages", 1);
+        map.put("searchCount", true);
+        return ResultResponseUtil.ok().msg("所有数据").data(map);
     }
+
+
+    @PostMapping(value = "/member/SelectByCondition")
+    @ApiOperation("会员账目 条件查询")
+    public Result memberSelectByCondition(@RequestBody MemberSelectCondition2 memberSelectCondition2, Integer page, Integer size) {
+
+
+        Map map = new HashMap();
+        map.put("records", null);
+        map.put("total", null);
+        map.put("size", size);
+        map.put("current", page);
+        map.put("pages", 1);
+        map.put("searchCount", true);
+        return ResultResponseUtil.ok().msg("所有数据").data(map);
+    }
+
+
 }

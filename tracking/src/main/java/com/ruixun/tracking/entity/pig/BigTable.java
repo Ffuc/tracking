@@ -1,28 +1,19 @@
-package com.ruixun.tracking.entity;
+package com.ruixun.tracking.entity.pig;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
+ * Program: tracking
  * <p>
+ * Description:
  *
- * </p>
- *
- * @author pig
- * @since 2020-03-28
- */
-@Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-@ApiModel(value = "TrackingWater对象", description = "")
-public class TrackingWater implements Serializable {
+ * @Date: 2020-03-29 09:45
+ **/
+public class BigTable {
+
 
     private static final long serialVersionUID = 1L;
     @TableId
@@ -73,12 +64,7 @@ public class TrackingWater implements Serializable {
 
     @ApiModelProperty(value = "备注")
     private String remark;
-    @ApiModelProperty(value = "下注方式")
 
-    private Integer betWay;
-    @ApiModelProperty(value = "钱的类型")
-    private Integer moneyType;
-    @ApiModelProperty(value = "盈亏")
-    private Integer profit;
+
 
 }

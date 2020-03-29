@@ -74,7 +74,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
         QueryWrapper<TrackingWaterDetails> queryWrapper = new QueryWrapper<TrackingWaterDetails>();
 
         if(!JudgeEmpty.isEmpty(gameSelectCondition.getNoteCode())){
-            queryWrapper.lambda().eq(TrackingWaterDetails::getMoneyType,gameSelectCondition.getNoteCode());
+//            queryWrapper.lambda().eq(TrackingWaterDetails::getMoneyType,gameSelectCondition.getNoteCode());
         }
 
         if(!JudgeEmpty.isEmpty(gameSelectCondition.getCodeId())){
