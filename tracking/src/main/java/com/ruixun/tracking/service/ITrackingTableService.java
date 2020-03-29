@@ -7,6 +7,8 @@ import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.entity.TrackingTable;
 import com.ruixun.tracking.entity.TrackingWater;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -21,4 +23,5 @@ public interface ITrackingTableService extends IService<TrackingTable> {
     Result findTablesInfo(TrackingWater trackingWater, Integer page, Integer size);
 
 
+    Result findTablesDetailsInfo(List<String> watersId);
 }

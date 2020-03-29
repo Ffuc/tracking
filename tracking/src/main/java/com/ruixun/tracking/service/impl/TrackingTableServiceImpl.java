@@ -9,12 +9,15 @@ import com.ruixun.tracking.common.utils.JudgeEmpty;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.dao.TrackingTableMapper;
+import com.ruixun.tracking.dao.TrackingUserMapper;
 import com.ruixun.tracking.dao.TrackingWaterDetailsMapper;
 import com.ruixun.tracking.dao.TrackingWaterMapper;
 import com.ruixun.tracking.entity.TrackingTable;
+import com.ruixun.tracking.entity.TrackingUser;
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
 import com.ruixun.tracking.service.ITrackingTableService;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +39,8 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
     private TrackingTableMapper tableMapper;
     @Autowired
     private TrackingWaterMapper waterMapper;
+    @ApiModelProperty
+    private TrackingUserMapper userMapper;
 
     @Autowired
     private TrackingWaterDetailsMapper waterDetailsMapper;
@@ -100,7 +105,7 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
             }
         }
 
-        /*resultMapList 存放前台所需数据*/
+        /* resultMapList 存放前台所需数据 */
         List<Map<String, Object>> resultMapList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < tablesId.size(); i++) {
             HashMap<String, Object> map = new HashMap<>();
@@ -111,7 +116,6 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
             QueryWrapper<TrackingWater> wrapper_TrackingWater = new QueryWrapper<TrackingWater>();
             wrapper_TrackingWater.lambda().in(TrackingWater::getWaterId, temp_waterIds);
             List<TrackingWater> trackingWater_temp = waterMapper.selectList(wrapper_TrackingWater);
-
             //根据流水号查询流水详细
             QueryWrapper<TrackingWaterDetails> wrapper_TrackingWaterDetails = new QueryWrapper<TrackingWaterDetails>();
             wrapper_TrackingWaterDetails.lambda().in(TrackingWaterDetails::getWaterId, temp_waterIds);
@@ -165,7 +169,76 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
         }
         PageHelper.startPage(page, size);
         PageInfo<Map<String, Object>> tablesInfo = new PageInfo<Map<String, Object>>(resultMapList);
-        return ResultResponseUtil.ok().data(tablesInfo);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("tablesInfo",tablesInfo);
+        map.put("wrapper_water",wrapper_water);
+        return ResultResponseUtil.ok().data(map);
+    }
+
+    @Override
+    public Result findTablesDetailsInfo(List<String> watersId) {
+        List<Map<String, Object>> resultMapList = new ArrayList<Map<String, Object>>();
+        for (int i = 0; i < watersId.size(); i++) {
+            /*上左*/
+            HashMap<String, Object> table_map = new HashMap<>();
+            /*1. 放入台桌号*/
+            QueryWrapper<TrackingWater> wrapper_water = new QueryWrapper<TrackingWater>();
+            wrapper_water.lambda().eq(TrackingWater::getWaterId,watersId.get(i));
+            TrackingWater trackingWater = waterMapper.selectOne(wrapper_water);
+            table_map.put("table_id",trackingWater.getTableId());
+            /*2. 放入时间*/
+            table_map.put("time",trackingWater.getEndTime());
+            /*3. 放入靴号*/
+            table_map.put("boots",trackingWater.getBoots());
+            /*4. 放入铺号*/
+            table_map.put("times",trackingWater.getTimes());
+            /*5. 放入总压*/
+            //根据流水号查询流水详细
+            QueryWrapper<TrackingWaterDetails> wrapper_TrackingWaterDetails = new QueryWrapper<TrackingWaterDetails>();
+            wrapper_TrackingWaterDetails.lambda().in(TrackingWaterDetails::getWaterId, watersId);
+            List<TrackingWaterDetails> trackingWaterDetails = waterDetailsMapper.selectList(wrapper_TrackingWaterDetails);
+            BigDecimal zongYa = new BigDecimal(0);
+            for (int j = 0; j < trackingWaterDetails.size(); j++) {
+                zongYa.add(trackingWaterDetails.get(j).getBetMoney());
+            }
+            table_map.put("vipZongYa", zongYa);
+            /*6. 放入公司盈亏*/
+            /*根据流水号查询流水表*/
+            QueryWrapper<TrackingWater> wrapper_TrackingWater = new QueryWrapper<TrackingWater>();
+            wrapper_TrackingWater.lambda().eq(TrackingWater::getWaterId, watersId.get(i));
+            TrackingWater water = waterMapper.selectOne(wrapper_TrackingWater);
+            table_map.put("gongSiYingKui",water.getProfit());
+            /*7. 放入保险*/
+            table_map.put("insurance",water.getInsurance());
+            /*8. 放入开牌结果*/
+            table_map.put("result",water.getResult());
+            /*9. 放入参与会员*/
+            String vipAccounts = "";
+            for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
+                vipAccounts = vipAccounts+","+trackingWaterDetails.get(i1).getAccount();
+            }
+            table_map.put("result",vipAccounts);
+            /*下右*/
+            List<Map<String,Object>> table_list = new ArrayList<Map<String,Object>>();
+            for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("account",trackingWaterDetails.get(i1).getAccount());
+                QueryWrapper<TrackingUser> wrapper_user = new QueryWrapper<TrackingUser>();
+                wrapper_user.lambda().eq(TrackingUser::getAccount,trackingWaterDetails.get(i1).getAccount());
+                TrackingUser trackingUser = userMapper.selectOne(wrapper_user);
+                map.put("cardId",trackingUser.getCardId());
+                map.put("name",trackingUser.getUsername());
+                map.put("betTarget",trackingWaterDetails.get(i1).getBetTarget());
+                map.put("insurance",trackingWaterDetails.get(i1).getInsurance());
+                map.put("zongYing",trackingWaterDetails.get(i1).getWinMoney());
+                map.put("money_type",trackingWater.getMoneyType());
+                map.put("bet_way",trackingWater.getBetWay());
+                table_list.add(map);
+            }
+            table_map.put("table_details",table_list);
+            resultMapList.add(table_map);
+        }
+        return ResultResponseUtil.ok().data(resultMapList);
     }
 
 }
