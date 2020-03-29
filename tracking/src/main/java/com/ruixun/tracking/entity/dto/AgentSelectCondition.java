@@ -1,20 +1,17 @@
 package com.ruixun.tracking.entity.dto;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
- * @author suitao
- * @description MemberController的查询DTO
- */
-@Data
-@ApiModel("会员账目查询DTO")
-public class MemberSelectCondition implements Serializable {
+ * Program: tracking
+ * <p>
+ * Description:
+ *
+ * @Date: 2020-03-28 19:32
+ **/
+public class AgentSelectCondition {
     //开始时间
     @ApiModelProperty("开始时间")
     private LocalDateTime beginTime;
@@ -29,12 +26,15 @@ public class MemberSelectCondition implements Serializable {
     private String bootId;
     //(游戏)类型
     @ApiModelProperty("游戏类型")
-    private Integer gameType;
+    private String gameType;
     //注码
     @ApiModelProperty("注码")
-    private Integer noteCode;
+    private String noteCode;
     //洗码号
     @ApiModelProperty("下注方式")
-    private Integer betWay;
+    private String betWay;
+    @ApiModelProperty("代理卡号")
+    private String cardId;
+
 
 }

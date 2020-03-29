@@ -3,6 +3,7 @@ package com.ruixun.tracking.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ruixun.tracking.entity.TrackingUser;
+import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
 
 import java.math.BigDecimal;
@@ -23,4 +24,5 @@ public interface ITrackingWaterDetailsService extends IService<TrackingWaterDeta
 
     BigDecimal getRebatesEarnings(String referrer);
 
+    TrackingWater getTrackingWater(String waterId);
 }

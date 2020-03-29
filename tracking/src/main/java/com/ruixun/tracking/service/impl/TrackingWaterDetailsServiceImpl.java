@@ -4,11 +4,15 @@ package com.ruixun.tracking.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ruixun.tracking.dao.TrackingWaterDetailsMapper;
+import com.ruixun.tracking.dao.TrackingWaterMapper;
 import com.ruixun.tracking.entity.TrackingUser;
+import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sound.midi.Track;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -22,6 +26,10 @@ import java.util.List;
  */
 @Service
 public class TrackingWaterDetailsServiceImpl extends ServiceImpl<TrackingWaterDetailsMapper, TrackingWaterDetails> implements ITrackingWaterDetailsService {
+
+    @Autowired
+    private TrackingWaterMapper trackingWaterMapper;
+
     /**
      * 通过给定 代理人 ,自动查询到这个代理人下面会员的所有返点收益
      */
@@ -55,6 +63,15 @@ public class TrackingWaterDetailsServiceImpl extends ServiceImpl<TrackingWaterDe
             bigDecimal = bigDecimal.add(list.get(i).getWashCodeAmount());
         }
         return bigDecimal;
+    }
+
+    /**
+     * 给定waterId 得到trackingWater
+     */
+    @Override
+    public TrackingWater getTrackingWater(String waterId) {
+        TrackingWater trackingWater = trackingWaterMapper.selectById(waterId);
+        return trackingWater;
     }
 
 }
