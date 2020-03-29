@@ -32,6 +32,7 @@ import java.util.Map;
  * @Date: 2020-03-26 07:08
  * @yichenkang
  **/
+@CrossOrigin
 @RestController
 @RequestMapping("/tracking/user")
 @Api("用户管理")
@@ -162,7 +163,7 @@ public class UserController {
         return ResultResponseUtil.ok().msg("已更新").data(map);
     }
 
-    //
+    
     @PostMapping("/info/addAgent")
     @ApiOperation("信息接口1:添加代理")
     public Result addAgent(@RequestBody Agent agent) {

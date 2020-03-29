@@ -32,8 +32,8 @@ public class GameController {
     /**
      * 1.龙湖和局-条件查询
      */
-    @PostMapping(value = "/SelectByCondition")
-    @ApiOperation("龙虎和局-条件查询")
+//    @PostMapping(value = "/SelectByCondition")
+//    @ApiOperation("龙虎和局-条件查询")
     public Result SelectByCondition(@RequestBody GameSelectCondition gameSelectCondition, Integer page, Integer size) {
         if (page == null) {
             page = 1;
@@ -48,8 +48,8 @@ public class GameController {
     /**
      * 1.龙湖和局-条件查询
      */
-    @PostMapping(value = "/SelectByCondition2")
-    @ApiOperation("龙虎和局-条件查询")
+//    @PostMapping(value = "/SelectByCondition2")
+//    @ApiOperation("龙虎和局-条件查询")
     public Result SelectByCondition2(@RequestBody GameSelectCondition gameSelectCondition, Integer page, Integer size) {
         LambdaUpdateWrapper<TrackingWaterDetails> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
         if (page == null) {

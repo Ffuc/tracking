@@ -33,7 +33,7 @@ public class TrackingWater implements Serializable {
     private String tableId;
 
     @ApiModelProperty(value = "靴号")
-    private String bootsId;
+    private Integer boots;
 
     @ApiModelProperty(value = "对应靴号的次数")
     private Integer times;
@@ -73,11 +73,13 @@ public class TrackingWater implements Serializable {
 
     @ApiModelProperty(value = "备注")
     private String remark;
-    @ApiModelProperty(value = "下注方式")
 
+    @ApiModelProperty(value = "下注方式")
     private Integer betWay;
+
     @ApiModelProperty(value = "钱的类型")
     private Integer moneyType;
+
     @ApiModelProperty(value = "盈亏")
     private Integer profit;
 
