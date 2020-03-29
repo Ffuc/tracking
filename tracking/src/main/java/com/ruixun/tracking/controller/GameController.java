@@ -2,6 +2,7 @@ package com.ruixun.tracking.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.ruixun.tracking.common.check.PageCheck;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.entity.DictionaryItem;
@@ -117,9 +118,16 @@ public class GameController {
             map.put("totalMoney", betTotalMoney);
             map.put("times", times);
             mapList.add(map);
-
         }
-        return ResultResponseUtil.ok().msg("已查询").data(mapList);
+        PageCheck pageCheck = new PageCheck(accounts.size(), memberSelectCondition.getPage(), 10);
+        Map map = new HashMap();
+        map.put("records", mapList);
+        map.put("total", mapList.size());
+        map.put("size", pageCheck.getSize());
+        map.put("current", memberSelectCondition.getPage());
+        map.put("pages", pageCheck.getPages());
+        map.put("searchCount", true);
+        return ResultResponseUtil.ok().msg("已查询").data(map);
     }
 
     /**
@@ -170,8 +178,15 @@ public class GameController {
             map.put("returnMoney", one.getBetMoney().multiply(new BigDecimal(0.5)));
             map.put("moneyType", iTrackingWaterService.getMoneyType(one.getWaterId()) == 0 ? "RMB" : "USD"); //人民币或者美元
             list1.add(map);
-
         }
-        return ResultResponseUtil.ok().msg("查询成功").data(list1);
+        PageCheck pageCheck = new PageCheck(list.size(), gameSelectCondition.getPage(), 10);
+        Map map = new HashMap();
+        map.put("records", list);
+        map.put("total", list.size());
+        map.put("size", pageCheck.getSize());
+        map.put("current", gameSelectCondition.getPage());
+        map.put("pages", pageCheck.getPages());
+        map.put("searchCount", true);
+        return ResultResponseUtil.ok().msg("查询成功").data(map);
     }
 }

@@ -32,4 +32,15 @@ class ITrackingWaterServiceTest {
 
 
     }
+
+    @Test
+    void name() {
+        List<String> list = new ArrayList<>();
+        list.add("o1");
+        list.add("o2");
+        list.add("o3");
+        list.add("o4");
+        List<String> strings = list.subList(0,2);
+        strings.forEach(i -> System.out.print(i));
+    }
 }

@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping("/test")
-@Api("会员账目")
+@Api("跨域测试controller")
 public class TestController {
 
-    @PostMapping("/hello")
+    @PostMapping("/test")
     public String hello(@RequestBody String name) {
         System.out.println(name);
         return name;

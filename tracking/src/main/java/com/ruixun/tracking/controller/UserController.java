@@ -171,10 +171,10 @@ public class UserController {
             queryWrapper.eq(TrackingUser::getAccount, account);
         }
         queryWrapper.eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 1);//已被删除
-        boolean update = iTrackingUserService.update(queryWrapper);
+        boolean update = iTrackingUserService.updateOne(queryWrapper);
         Map map = new HashMap();
         map.put("result", update);
-        return ResultResponseUtil.ok().msg("已更新").data(map);
+        return ResultResponseUtil.ok().msg("操作已执行").data(map);
     }
 
     @PostMapping("/info/addAgent")
@@ -203,10 +203,9 @@ public class UserController {
         trackingUser.setCardId(agent.getCard_id());
         trackingUser.setPhone(agent.getPhone());
         boolean save = iTrackingUserService.addOne(trackingUser);
-        if (save) {
-            return ResultResponseUtil.ok().msg("操作成功").data(save);
-        }
-        return ResultResponseUtil.error().msg("操作失败").data(null);
+        Map map = new HashMap();
+        map.put("result", save);
+        return ResultResponseUtil.error().msg("操作执行").data(map);
     }
 
 
