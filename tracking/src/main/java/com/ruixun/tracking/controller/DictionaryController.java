@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * <p>
  * Description: 字典
  **/
+@CrossOrigin
 @RestController
 @Api("字典查询游戏类别等等信息")
 @RequestMapping("/tracking/dictionary")
