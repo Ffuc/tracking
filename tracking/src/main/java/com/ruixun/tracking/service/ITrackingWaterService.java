@@ -26,6 +26,8 @@ public interface ITrackingWaterService extends IService<TrackingWater> {
 
     Result selectLHByCondition(GameSelectCondition gameSelectCondition, Integer page, Integer size);
 
-
-    List<TrackingWaterDetails> list(LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail);
+    /**
+     * 通过waterId拿到moneyType
+     */
+    Integer getMoneyType(String waterId);
 }

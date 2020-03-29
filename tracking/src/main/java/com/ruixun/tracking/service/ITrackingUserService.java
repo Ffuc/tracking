@@ -1,12 +1,13 @@
 package com.ruixun.tracking.service;
 
 
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ruixun.tracking.entity.TrackingUser;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author pig
@@ -14,6 +15,8 @@ import com.ruixun.tracking.entity.TrackingUser;
  */
 public interface ITrackingUserService extends IService<TrackingUser> {
 
+    boolean updateOne(LambdaUpdateWrapper<TrackingUser> lambdaUpdateWrapper);
 
+    boolean addOne(TrackingUser trackingUser);
 
 }

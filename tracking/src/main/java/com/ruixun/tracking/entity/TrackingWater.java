@@ -87,8 +87,7 @@ public class TrackingWater implements Serializable {
 
     @ApiModelProperty(value = "盈亏")
     private BigDecimal profit;
-    @ApiModelProperty(value = "洗码费")
-    private BigDecimal washCodeMoney;
+
 
 
 }

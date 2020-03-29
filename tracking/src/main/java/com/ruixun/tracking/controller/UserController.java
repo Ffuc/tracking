@@ -10,6 +10,7 @@ import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.entity.TrackingUser;
 import com.ruixun.tracking.entity.VO.Agent;
 import com.ruixun.tracking.entity.dto.UserParams;
+import com.ruixun.tracking.entity.dto.UserParams2;
 import com.ruixun.tracking.service.ITrackingMemberCostService;
 import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
@@ -47,6 +48,7 @@ public class UserController {
     @Autowired
     ITrackingUserService iTrackingUserService;
 
+
     @Autowired
     ITrackingWaterDetailsService trackingWaterDetailsService;
 
@@ -57,7 +59,7 @@ public class UserController {
     @ApiOperation(value = "信息接口1-用户管理:提供条件,获得对应的结果  ")
     public Result getUserInfo(@RequestBody UserParams userParams) {
         if (userParams.getPage() == null) {
-            return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
+            userParams.setPage(1);
         }
         LambdaQueryWrapper<TrackingUser> queryWrapper = new LambdaQueryWrapper<>();
         if (userParams.getName() != null) { //名字不为空就拼接模糊查询
@@ -100,25 +102,23 @@ public class UserController {
 
     @PostMapping("/info/deletedMember")
     @ApiOperation(value = "信息接口1-已删代理:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码", notes = "referrer上级代理账号,account账号,username姓名,page页码")
-    public Result getUserStatisticsInfo(@RequestBody Map data) {
-        if (data.get("page") == null) {
-            return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
+    public Result getUserStatisticsInfo(@RequestBody UserParams2 userParams2) {
+        if (userParams2.getPage() == null) {
+            userParams2.setPage(1);
         }
         LambdaQueryWrapper<TrackingUser> queryWrapper = new LambdaQueryWrapper<>();
-        if (data.get("referrer") != null) {
-            queryWrapper.eq(TrackingUser::getReferrer, (String) data.get("referrer"));
+        if (userParams2.getHigherAgent() != null) {
+            queryWrapper.eq(TrackingUser::getReferrer, userParams2.getHigherAgent());
         }
-        if (data.get("account") != null) {
-            queryWrapper.eq(TrackingUser::getAccount, (String) data.get("account"));
+        if (userParams2.getAccount() != null) {
+            queryWrapper.eq(TrackingUser::getAccount, userParams2.getAccount());
         }
-        if (data.get("username") != null) {
-            queryWrapper.eq(TrackingUser::getUsername, (String) data.get("username"));
+        if (userParams2.getName() != null) {
+            queryWrapper.eq(TrackingUser::getUsername, userParams2.getName());
         }
         queryWrapper.eq(TrackingUser::getUserType, 1).or().eq(TrackingUser::getUserType, 2).eq(TrackingUser::getIsDelete, 1);//已被删除的代理
         queryWrapper.select(TrackingUser::getReferrer, TrackingUser::getAccount, TrackingUser::getUsername, TrackingUser::getPhone, TrackingUser::getProportion, TrackingUser::getWashCodeRatio);
-
-
-        Integer pageNum = (Integer) data.get("page");
+        Integer pageNum = userParams2.getPage();
         Page<TrackingUser> page = new Page<>(pageNum, 10);
         IPage<Map<String, Object>> page1 = iTrackingUserService.pageMaps(page, queryWrapper);
         return ResultResponseUtil.ok().msg("查询成功").data(page1);
@@ -149,7 +149,7 @@ public class UserController {
     }
 
     @PostMapping("/info/regainMember")
-    @ApiOperation(value = "信息接口1:提供条件,account账号 可以从删除状态还原账号", notes = "account账号")
+    @ApiOperation(value = "信息接口-增加会员1:提供条件,account账号 可以从删除状态还原账号", notes = "account账号")
     public Result regainMember(String account) {
         LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
         if (account != null) {
@@ -157,14 +157,14 @@ public class UserController {
         }
         queryWrapper.eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 0);//已被删除
 
-        boolean update = iTrackingUserService.update(queryWrapper);
+        boolean update = iTrackingUserService.updateOne(queryWrapper);
         Map map = new HashMap();
         map.put("result", update);
         return ResultResponseUtil.ok().msg("已更新").data(map);
     }
 
     @PostMapping("/info/deleteMember")
-    @ApiOperation(value = "信息接口1:提供条件,account账号  删除账号", notes = "account账号")
+    @ApiOperation(value = "信息接口-删除会员1:提供条件,account账号  删除账号", notes = "account账号")
     public Result deleteMember(String account) {
         LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
         if (account != null) {
@@ -202,12 +202,11 @@ public class UserController {
         trackingUser.setRemark(agent.getRemark());
         trackingUser.setCardId(agent.getCard_id());
         trackingUser.setPhone(agent.getPhone());
-        boolean save = iTrackingUserService.save(trackingUser);
+        boolean save = iTrackingUserService.addOne(trackingUser);
         if (save) {
             return ResultResponseUtil.ok().msg("操作成功").data(save);
         }
         return ResultResponseUtil.error().msg("操作失败").data(null);
-
     }
 
 

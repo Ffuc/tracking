@@ -1,16 +1,12 @@
 package com.ruixun.tracking.entity.pig;
 
-import com.baomidou.mybatisplus.annotation.TableId;
+
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ruixun.tracking.entity.TrackingUser;
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
-import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
 import com.ruixun.tracking.service.ITrackingWaterService;
-import io.swagger.annotations.ApiModelProperty;
-import org.apache.commons.collections.map.MultiKeyMap;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

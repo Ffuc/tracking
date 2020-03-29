@@ -3,6 +3,7 @@ package com.ruixun.tracking.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.injector.methods.SelectOne;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -117,9 +118,13 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
         return ResultResponseUtil.ok().data(mapIPage);
     }
 
+
     @Override
-    public List<TrackingWaterDetails> list(LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail) {
-        return null;
+    public Integer getMoneyType(String waterId) {
+        LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(TrackingWater::getWaterId, waterId).select(TrackingWater::getGameType);
+        TrackingWater one = this.getOne(lambdaQueryWrapper);
+        return one.getGameType();
     }
 
 
