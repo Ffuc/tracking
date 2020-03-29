@@ -1,5 +1,6 @@
 package com.ruixun.tracking.entity.dto;
 
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -32,12 +33,16 @@ public class GameSelectCondition implements Serializable {
     private String bootId;
     //(游戏)类型
     @ApiModelProperty("游戏类型")
-    private String gameType;
+    private Integer gameType;
     //注码
     @ApiModelProperty("注码")
-    private String noteCode;
+    private Integer noteCode;
     //洗码号
     @ApiModelProperty("洗码号")
     private String codeId;
+    @ApiModelProperty("牌")
+    private Integer page;
+    @ApiModelProperty("大小")
+    private Integer size;
 
 }

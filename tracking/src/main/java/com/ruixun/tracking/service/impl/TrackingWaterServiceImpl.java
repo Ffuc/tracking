@@ -1,6 +1,7 @@
 package com.ruixun.tracking.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -114,6 +115,11 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
 //            map.put("总金额",trackingWaterDetails.stream().map(TrackingWaterDetails::getBetMoney).reduce(BigDecimal::add));
 //        }
         return ResultResponseUtil.ok().data(mapIPage);
+    }
+
+    @Override
+    public List<TrackingWaterDetails> list(LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail) {
+        return null;
     }
 
 

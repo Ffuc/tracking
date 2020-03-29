@@ -54,7 +54,7 @@ public class UserController {
     ITrackingMemberCostService costService;
 
     @PostMapping("/info")
-    @ApiOperation("信息接口1-用户管理:提供条件,获得对应的结果")
+    @ApiOperation(value = "信息接口1-用户管理:提供条件,获得对应的结果  ")
     public Result getUserInfo(@RequestBody UserParams userParams) {
         if (userParams.getPage() == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
@@ -99,7 +99,7 @@ public class UserController {
     }
 
     @PostMapping("/info/deletedMember")
-    @ApiOperation("信息接口1-已删代理:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码")
+    @ApiOperation(value = "信息接口1-已删代理:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码", notes = "referrer上级代理账号,account账号,username姓名,page页码")
     public Result getUserStatisticsInfo(@RequestBody Map data) {
         if (data.get("page") == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
@@ -125,7 +125,7 @@ public class UserController {
     }
 
     @PostMapping("/info/deletedAgent")
-    @ApiOperation("信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码")
+    @ApiOperation(value = "信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码", notes = "referrer上级代理账号,account账号,username姓名,page页码")
     public Result getDeletedMemberInfo(@RequestBody Map data) {
         if (data.get("page") == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
@@ -149,7 +149,7 @@ public class UserController {
     }
 
     @PostMapping("/info/regainMember")
-    @ApiOperation("信息接口1:提供条件,account账号 可以从删除状态还原账号")
+    @ApiOperation(value = "信息接口1:提供条件,account账号 可以从删除状态还原账号", notes = "account账号")
     public Result regainMember(@RequestBody Map data) {
         LambdaUpdateWrapper<TrackingUser> queryWrapper = new LambdaUpdateWrapper<>();
         if (data.get("account") != null) {
@@ -163,7 +163,6 @@ public class UserController {
         return ResultResponseUtil.ok().msg("已更新").data(map);
     }
 
-    
     @PostMapping("/info/addAgent")
     @ApiOperation("信息接口1:添加代理")
     public Result addAgent(@RequestBody Agent agent) {

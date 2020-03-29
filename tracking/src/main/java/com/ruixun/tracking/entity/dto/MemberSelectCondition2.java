@@ -43,4 +43,7 @@ public class MemberSelectCondition2 {
 
     private String userName;
 
+    private Integer page;
+    private Integer size;
+
 }

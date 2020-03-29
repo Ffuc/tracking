@@ -19,6 +19,7 @@ import java.util.List;
  * @author suitao
  * @description
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/tracking/tableManage")
 @Api("台桌管理")
