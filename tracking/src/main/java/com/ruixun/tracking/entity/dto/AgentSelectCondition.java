@@ -1,23 +1,17 @@
 package com.ruixun.tracking.entity.dto;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDateTime;
 
-import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
- * @author suitao
- * @description GameController的查询DTO
- */
-@Data
-@ApiModel("龙虎和局查询DTO")
-public class GameSelectCondition implements Serializable {
+ * Program: tracking
+ * <p>
+ * Description:
+ *
+ * @Date: 2020-03-28 19:32
+ **/
+public class AgentSelectCondition {
     //开始时间
     @ApiModelProperty("开始时间")
     private LocalDateTime beginTime;
@@ -37,7 +31,10 @@ public class GameSelectCondition implements Serializable {
     @ApiModelProperty("注码")
     private String noteCode;
     //洗码号
-    @ApiModelProperty("洗码号")
-    private String codeId;
+    @ApiModelProperty("下注方式")
+    private String betWay;
+    @ApiModelProperty("代理卡号")
+    private String cardId;
+
 
 }

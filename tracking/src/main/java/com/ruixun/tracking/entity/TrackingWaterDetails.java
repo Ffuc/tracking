@@ -32,7 +32,19 @@ public class TrackingWaterDetails implements Serializable {
     @ApiModelProperty(value = "此局下注金额")
     private BigDecimal betMoney;
     @ApiModelProperty(value = "此局洗码量")
+
     private BigDecimal washCodeAmount;
+    @ApiModelProperty(value = "此局赢得钱")
+
+    private BigDecimal winMoney;
+    @ApiModelProperty(value = "此局保险")
+
+    private BigDecimal insurance;
+    @ApiModelProperty(value = "派彩所赢")
+
+    private BigDecimal lotteryWin;
+
+
     @ApiModelProperty(value = "上级代理人")
     private String referrer;
 
@@ -45,11 +57,7 @@ public class TrackingWaterDetails implements Serializable {
     @ApiModelProperty(value = "下注时间")
     private LocalDateTime betTime;
 
-    @ApiModelProperty(value = "下注方式")
-    private Integer betWay;
-
-    @ApiModelProperty(value = "钱的类型")
-    private Integer moneyType;
-
+    @ApiModelProperty(value = "游戏类别")
+    private Integer gameType;
 
 }

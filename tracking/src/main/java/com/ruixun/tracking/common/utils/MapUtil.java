@@ -51,13 +51,10 @@ public class MapUtil {
         return map;
     }
 
-    public static void main(String[] args) {
-        Card card = new Card();
-        card.setColor(0);
-        card.setId(1);
-        card.setSize(10);
-        Map map = MapUtil.ObjectParseMap(card);
-        System.out.println(1);
-        System.out.println(1);
+    public static Map kickKey(String key, Map map) {
+        map.remove(key);
+
+
+        return map;
     }
 }

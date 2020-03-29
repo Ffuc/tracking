@@ -23,7 +23,9 @@ import java.util.List;
 @Service
 public class TrackingMemberCostServiceImpl extends ServiceImpl<TrackingMemberCostMapper, TrackingMemberCost> implements ITrackingMemberCostService {
 
-
+    /**
+     * 查询分担费用
+     */
     @Override
     public BigDecimal getSharingCost(TrackingUser trackingUser) {
         BigDecimal bigDecimal = new BigDecimal(0);
@@ -32,6 +34,22 @@ public class TrackingMemberCostServiceImpl extends ServiceImpl<TrackingMemberCos
         }
         LambdaQueryWrapper<TrackingMemberCost> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(TrackingMemberCost::getReference, trackingUser.getReferrer()).eq(TrackingMemberCost::getIsDelete, 0);
+        List<TrackingMemberCost> list = list(lambdaQueryWrapper);
+        for (int i = 0; i < list.size(); i++) {
+            bigDecimal = bigDecimal.add(list.get(i).getTotalMoney());
+        }
+        return bigDecimal;
+    }
+
+    /**
+     * 查询分担费用
+     * 警告:请提前保证用户类型为 占成代理
+     */
+    @Override
+    public BigDecimal getSharingCost(String referer) {
+        BigDecimal bigDecimal = new BigDecimal(0);
+        LambdaQueryWrapper<TrackingMemberCost> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(TrackingMemberCost::getReference, referer).eq(TrackingMemberCost::getIsDelete, 0);
         List<TrackingMemberCost> list = list(lambdaQueryWrapper);
         for (int i = 0; i < list.size(); i++) {
             bigDecimal = bigDecimal.add(list.get(i).getTotalMoney());

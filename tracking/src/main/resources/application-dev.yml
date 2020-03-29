@@ -1,5 +1,5 @@
 server:
-  port: 7070
+  port: 8080
 
 
 spring:
@@ -39,7 +39,7 @@ mybatis-plus:
 
 logging:
   level:
-    com.ruixun.tracking_system.dao: DEBUG
+    com.ruixun.tracking: DEBUG
 
 
 

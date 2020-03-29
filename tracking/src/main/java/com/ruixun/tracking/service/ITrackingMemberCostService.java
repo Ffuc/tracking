@@ -18,4 +18,6 @@ import java.math.BigDecimal;
 public interface ITrackingMemberCostService extends IService<TrackingMemberCost> {
 
     BigDecimal getSharingCost(TrackingUser trackingUser);
+
+    BigDecimal getSharingCost(String referer);
 }

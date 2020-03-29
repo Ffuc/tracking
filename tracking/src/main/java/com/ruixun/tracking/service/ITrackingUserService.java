@@ -15,4 +15,5 @@ import com.ruixun.tracking.entity.TrackingUser;
 public interface ITrackingUserService extends IService<TrackingUser> {
 
 
+
 }
