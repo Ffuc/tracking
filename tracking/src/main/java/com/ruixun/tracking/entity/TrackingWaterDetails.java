@@ -59,5 +59,7 @@ public class TrackingWaterDetails implements Serializable {
 
     @ApiModelProperty(value = "游戏类别")
     private Integer gameType;
+    @ApiModelProperty(value = "洗码费")
+    private BigDecimal washCodeMoney;
 
 }

@@ -24,7 +24,7 @@ import java.util.*;
  * <p>
  * Description:
  **/
-@CrossOrigin
+@CrossOrigin()
 @RestController
 @RequestMapping("/tracking/member")
 @Api("会员账目")
@@ -45,7 +45,7 @@ public class MemberAccountsController {
 
     @PostMapping(value = "/SelectByCondition")
     @ApiOperation("会员账目 条件查询")
-    public Result SelectByCondition(@RequestBody MemberSelectCondition memberSelectCondition, Integer page, Integer size) {
+    public Result SelectByCondition(@RequestBody MemberSelectCondition memberSelectCondition,Integer page,Integer size) {
         LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail = new LambdaQueryWrapper<>();
         String tableType = "";
