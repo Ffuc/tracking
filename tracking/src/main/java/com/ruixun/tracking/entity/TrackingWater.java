@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -81,6 +82,6 @@ public class TrackingWater implements Serializable {
     private Integer moneyType;
 
     @ApiModelProperty(value = "盈亏")
-    private Integer profit;
+    private BigDecimal profit;
 
 }
