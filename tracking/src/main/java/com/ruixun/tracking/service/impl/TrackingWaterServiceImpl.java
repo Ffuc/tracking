@@ -55,7 +55,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
             queryWrapper_Warter.lambda().eq(TrackingWater::getTableId, gameSelectCondition.getTableId());
         }
         if (!JudgeEmpty.isEmpty(gameSelectCondition.getBootId())) {
-            queryWrapper_Warter.lambda().eq(TrackingWater::getBoots, gameSelectCondition.getBootId());
+            queryWrapper_Warter.lambda().eq(TrackingWater::getBootsTimes, gameSelectCondition.getBootId());
         }
         if (!JudgeEmpty.isEmpty(gameSelectCondition.getGameType())) {
             queryWrapper_Warter.lambda().eq(TrackingWater::getGameType, gameSelectCondition.getGameType());
@@ -121,7 +121,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
     public IPage<TrackingWater> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
         QueryWrapper<TrackingWater> queryWrapper = new QueryWrapper<>();
         if (trackingAgencyAccountsDto == null) {
-            IPage page = trackingWaterMapper.selectPage(new Page(1, 1), queryWrapper);
+            IPage page = trackingWaterMapper.selectPage(new Page(current, 1), queryWrapper);
             return page;
         }
         //输入时间
@@ -141,12 +141,13 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
         }
         //输入靴号
         if (trackingAgencyAccountsDto.getBootId() != null) {
-            queryWrapper.lambda().eq(TrackingWater::getBoots, trackingAgencyAccountsDto.getBootId());
+            queryWrapper.lambda().eq(TrackingWater::getBootsTimes, trackingAgencyAccountsDto.getBootId());
         }
         //结果集过滤
         queryWrapper.lambda().select(TrackingWater::getWaterId,
                 TrackingWater::getTableId,
-                TrackingWater::getBoots,
+                TrackingWater::getBootsTimes,
+                TrackingWater::getTimes,
                 TrackingWater::getEndTime,
                 TrackingWater::getDutchOfficer,
                 TrackingWater::getResult,
@@ -158,35 +159,22 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
     }
 
 
-    public IPage<TrackingWater> waterDetails(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current) {
-        QueryWrapper<TrackingWater> queryWrapper = new QueryWrapper<>();
-        if (trackingAgencyAccountsDto == null) {
-            IPage page = trackingWaterMapper.selectPage(new Page(1, 1), queryWrapper);
-            return page;
+    //查询详情
+    public TrackingWater waterDetails(String waterId) {
+
+        if (waterId!=null){
+            QueryWrapper<TrackingWater> queryWrapper = new QueryWrapper<>();
+            //结果集过滤
+            queryWrapper.lambda().eq(TrackingWater::getWaterId,waterId);
+            queryWrapper.lambda().select(TrackingWater::getWaterId,
+                    TrackingWater::getTableId,
+                    TrackingWater::getBootsTimes,
+                    TrackingWater::getTimes,
+                    TrackingWater::getResult);
+            TrackingWater trackingWater = trackingWaterMapper.selectOne(queryWrapper);
+            return trackingWater;
         }
-        //输入时间
-        if (trackingAgencyAccountsDto.getStartTime() != null) {
-            queryWrapper.lambda().ge(TrackingWater::getEndTime, trackingAgencyAccountsDto.getStartTime());
-            queryWrapper.lambda().le(TrackingWater::getEndTime, LocalDateTime.now());
-        }
-        //输入桌号
-        if (trackingAgencyAccountsDto.getTableId() != null) {
-            queryWrapper.lambda().eq(TrackingWater::getTableId, trackingAgencyAccountsDto.getTableId());
-        }
-        //输入靴号
-        if (trackingAgencyAccountsDto.getBootId() != null) {
-            queryWrapper.lambda().eq(TrackingWater::getBoots, trackingAgencyAccountsDto.getBootId());
-        }
-        //结果集过滤
-        queryWrapper.lambda().select(TrackingWater::getWaterId,
-                TrackingWater::getTableId,
-                TrackingWater::getBoots,
-                TrackingWater::getEndTime,
-                TrackingWater::getResult);
-        //分页查询
-        Page<TrackingWater> trackingWaterPage = new Page<>(current, 1);
-        IPage<TrackingWater> trackingWaterPage1 = trackingWaterMapper.selectPage(trackingWaterPage, queryWrapper);
-        return trackingWaterPage1;
+        return null;
     }
 
 

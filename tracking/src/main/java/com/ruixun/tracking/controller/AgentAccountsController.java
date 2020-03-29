@@ -1,22 +1,30 @@
 package com.ruixun.tracking.controller;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ruixun.tracking.common.utils.Result;
+import com.ruixun.tracking.common.utils.ResultResponseUtil;
 import com.ruixun.tracking.entity.TrackingMemberCost;
+import com.ruixun.tracking.entity.dto.TrackingAgencyAccountsDto;
+import com.ruixun.tracking.service.ITrackingAgentAccounts;
 import com.ruixun.tracking.service.ITrackingMemberCostService;
+import com.ruixun.tracking.service.impl.TrackingAgentAccounts;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Program: tracking_system
  * <p>
  * Description:
  **/
-//@RestController("/tracking/agent")
-//@Api("代理账目")
-
+@RestController()
+@Api("代理账目")
+@RequestMapping("/accounts")
 public class AgentAccountsController {
 
     /**
@@ -36,6 +44,31 @@ public class AgentAccountsController {
 //    public Result agentAccount(){
 //
 //    }
+    @Autowired
+    private ITrackingAgentAccounts iTrackingAgentAccounts;
+    //定义下注金额总
+    BigDecimal USDbetMoney = new BigDecimal(0);
+    //定义总赢
+    BigDecimal USDwashCodeAmountMAX = new BigDecimal(0);
+    //定义总洗码
+    BigDecimal USDwashCodeAmountMIN = new BigDecimal(0);
+    //总洗码费
+    BigDecimal USDwashAodeAmount = new BigDecimal(0);
+
+    //定义下注金额总
+    BigDecimal RMBbetMoney = new BigDecimal(0);
+    //定义总赢
+    BigDecimal RMBwashCodeAmountMAX = new BigDecimal(0);
+    //定义总洗码
+    BigDecimal RMBwashCodeAmountMIN = new BigDecimal(0);
+    //总洗码费
+    BigDecimal RMBwashAodeAmount = new BigDecimal(0);
+
+    @PostMapping("/findAgentcy")
+    public Result findAgentcy(@RequestBody @RequestParam(required = false) TrackingAgencyAccountsDto trackingAgencyAccountsDto){
+        IPage<Map<String, Object>> all = iTrackingAgentAccounts.getAll(trackingAgencyAccountsDto);
+        return ResultResponseUtil.ok().msg("查询成功").data(all);
+    }
 
 
 }

@@ -26,20 +26,25 @@ public class TrackingAgencyAccountsDto {
     private String tableId;
     @ApiModelProperty(value = "靴号")
     private String bootId;
-    @ApiModelProperty(value = "台桌类型")
-    private Integer tableType;
     @ApiModelProperty(value = "注码")
-    private String noteId;
+    private String monyType;
+    @ApiModelProperty(value = "游戏类型")
+    private String gameType;
     @ApiModelProperty(value = "下注方式")
-    private String betType;
+    private String betWay;
     @ApiModelProperty(value = "代理卡号")
     private String cardId;
     @ApiModelProperty(value = "代理账号")
     private String account;
     @ApiModelProperty(value = "代理名字")
     private String username;
+    @ApiModelProperty(value = "分页")
+    private Integer current;
 
-    public TrackingAgencyAccountsDto(LocalDateTime startTime, LocalDateTime endTime, LocalDateTime yesterday, LocalDateTime today, Integer thismonth, LocalDateTime lastmonth, Integer all, String tableId, String bootId, Integer tableType, String noteId, String betType, String cardId, String account, String username) {
+    public TrackingAgencyAccountsDto() {
+    }
+
+    public TrackingAgencyAccountsDto(LocalDateTime startTime, LocalDateTime endTime, LocalDateTime yesterday, LocalDateTime today, Integer thismonth, LocalDateTime lastmonth, Integer all, String tableId, String bootId, String monyType, String gameType, String betWay, String cardId, String account, String username, Integer current) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.yesterday = yesterday;
@@ -49,26 +54,13 @@ public class TrackingAgencyAccountsDto {
         this.all = all;
         this.tableId = tableId;
         this.bootId = bootId;
-        this.tableType = tableType;
-        this.noteId = noteId;
-        this.betType = betType;
+        this.monyType = monyType;
+        this.gameType = gameType;
+        this.betWay = betWay;
         this.cardId = cardId;
         this.account = account;
         this.username = username;
-    }
-
-    public TrackingAgencyAccountsDto(LocalDateTime startTime, LocalDateTime endTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-
-    public TrackingAgencyAccountsDto() {
-    }
-
-    public TrackingAgencyAccountsDto(LocalDateTime startTime, String tableId, String bootId) {
-        this.startTime = startTime;
-        this.tableId = tableId;
-        this.bootId = bootId;
+        this.current = current;
     }
 
     public LocalDateTime getStartTime() {
@@ -143,28 +135,28 @@ public class TrackingAgencyAccountsDto {
         this.bootId = bootId;
     }
 
-    public Integer getTableType() {
-        return tableType;
+    public String getMonyType() {
+        return monyType;
     }
 
-    public void setTableType(Integer tableType) {
-        this.tableType = tableType;
+    public void setMonyType(String monyType) {
+        this.monyType = monyType;
     }
 
-    public String getNoteId() {
-        return noteId;
+    public String getGameType() {
+        return gameType;
     }
 
-    public void setNoteId(String noteId) {
-        this.noteId = noteId;
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
     }
 
-    public String getBetType() {
-        return betType;
+    public String getBetWay() {
+        return betWay;
     }
 
-    public void setBetType(String betType) {
-        this.betType = betType;
+    public void setBetWay(String betWay) {
+        this.betWay = betWay;
     }
 
     public String getCardId() {
@@ -191,6 +183,16 @@ public class TrackingAgencyAccountsDto {
         this.username = username;
     }
 
+    public Integer getCurrent() {
+        if (this.current==null)
+            current=1;
+        return current;
+    }
+
+    public void setCurrent(Integer current) {
+        this.current = current;
+    }
+
     @Override
     public String toString() {
         return "TrackingAgencyAccountsDto{" +
@@ -203,12 +205,13 @@ public class TrackingAgencyAccountsDto {
                 ", all=" + all +
                 ", tableId='" + tableId + '\'' +
                 ", bootId='" + bootId + '\'' +
-                ", tableType=" + tableType +
-                ", noteId='" + noteId + '\'' +
-                ", betType='" + betType + '\'' +
+                ", monyType='" + monyType + '\'' +
+                ", gameType='" + gameType + '\'' +
+                ", betWay='" + betWay + '\'' +
                 ", cardId='" + cardId + '\'' +
                 ", account='" + account + '\'' +
                 ", username='" + username + '\'' +
+                ", current='" + current + '\'' +
                 '}';
     }
 }

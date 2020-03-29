@@ -21,8 +21,8 @@ import java.util.Map;
  * @since 2020-03-28
  */
 public interface ITrackingWaterService extends IService<TrackingWater> {
-    IPage<Map<String, Object>> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current);
+    IPage<TrackingWater> waterAccounts(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current);
 
     Result selectLHByCondition(GameSelectCondition gameSelectCondition, Integer page, Integer size);
-    public IPage<Map<String, Object>> waterDetails(TrackingAgencyAccountsDto trackingAgencyAccountsDto, Integer current);
+    TrackingWater waterDetails(String waterId);
 }
