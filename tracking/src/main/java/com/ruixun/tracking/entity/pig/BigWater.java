@@ -69,7 +69,7 @@ public class BigWater {
         //"台桌号")
         this.tableId = one.getTableId();
         //"靴号")
-        this.bootsId = one.getBoots();
+        this.bootsId = one.getBootsTimes();
         //"对应靴号的次数")
         this.times = one.getTimes();
         //"牌库")
