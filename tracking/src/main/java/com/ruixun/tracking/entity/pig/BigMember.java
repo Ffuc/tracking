@@ -13,6 +13,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ruixun.tracking.entity.TrackingUser;
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
+import com.ruixun.tracking.service.IDictionaryItemService;
 import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
 import com.ruixun.tracking.service.ITrackingWaterService;
@@ -30,6 +31,7 @@ public class BigMember {
     ITrackingWaterService trackingWaterService;
     ITrackingWaterDetailsService trackingWaterDetailsService;
     ITrackingUserService iTrackingUserService;
+    IDictionaryItemService iDictionaryItemService;
 
     //洗码号(账号)
     private String Account;     //账号
@@ -46,12 +48,13 @@ public class BigMember {
 
     public BigMember(String Account, ITrackingWaterService trackingWaterService,
                      ITrackingWaterDetailsService trackingWaterDetailsService,
-                     ITrackingUserService iTrackingUserService) {
+                     ITrackingUserService iTrackingUserService, IDictionaryItemService iDictionaryItemService) {
         this.Account = Account;
         //初始化
         this.trackingWaterService = trackingWaterService;
         this.trackingWaterDetailsService = trackingWaterDetailsService;
         this.iTrackingUserService = iTrackingUserService;
+        this.iDictionaryItemService = iDictionaryItemService;
         QueryWrapper<TrackingUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(TrackingUser::getAccount, Account);
         TrackingUser one = iTrackingUserService.getOne(queryWrapper);
@@ -187,10 +190,10 @@ public class BigMember {
         int count = trackingWaterDetailsService.count(queryWrapper1);
         for (int i = 0; i < list.size(); i++) {
             lotteryWin = lotteryWin.add(list.get(i).getLotteryWin());
-            betTotalMoney = lotteryWin.add(list.get(i).getBetMoney());
-            insuranceTotal = lotteryWin.add(list.get(i).getInsurance());
-            washCodeTotal = lotteryWin.add(list.get(i).getWashCodeAmount());
-            winMoneyTotal = lotteryWin.add(list.get(i).getWinMoney());
+            betTotalMoney = betTotalMoney.add(list.get(i).getBetMoney());
+            insuranceTotal = insuranceTotal.add(list.get(i).getInsurance());
+            washCodeTotal = washCodeTotal.add(list.get(i).getWashCodeAmount());
+            winMoneyTotal = winMoneyTotal.add(list.get(i).getWinMoney());
             if (sumList.contains(list.get(i).getWaterId())) {
                 sum = lotteryWin.add(list.get(i).getWinMoney());
             }
@@ -198,10 +201,11 @@ public class BigMember {
                 pair = lotteryWin.add(list.get(i).getWinMoney());
             }
         }
+        Integer gameType = list.get(0).getGameType();
         map.put("lotteryWin", lotteryWin);
         map.put("insuranceTotal", insuranceTotal);
         map.put("winMoneyTotal", winMoneyTotal);
-        map.put("washCodeTotal", washCodeTotal);
+        map.put("tableType", iDictionaryItemService.getGameCN("table", gameType));
         map.put("betTotalMoney", betTotalMoney);
         map.put("sum", sum);
         map.put("pair", pair);

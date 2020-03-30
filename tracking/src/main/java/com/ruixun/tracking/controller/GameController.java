@@ -108,7 +108,7 @@ public class GameController {
         List<Map> mapList = new ArrayList<>();
         //清除重复账号操作 -end
         for (int i = 0; i < accounts.size(); i++) {
-            BigMember bigMember = new BigMember(accounts.get(i), iTrackingWaterService, iTrackingWaterDetailsService, iTrackingUserService);
+            BigMember bigMember = new BigMember(accounts.get(i), iTrackingWaterService, iTrackingWaterDetailsService, iTrackingUserService,dictionaryItemService);
             Integer times = bigMember.betTimesSelf(null);
             BigDecimal betTotalMoney = bigMember.betTotalMoneySelf(null);
             Map map = new HashMap();

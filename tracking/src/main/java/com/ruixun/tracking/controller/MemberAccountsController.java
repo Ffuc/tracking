@@ -111,7 +111,7 @@ public class MemberAccountsController {
         accounts.addAll(h);
         List<Map> data = new ArrayList<>();
         for (int i = 0; i < accounts.size(); i++) {
-            BigMember bigMember = new BigMember(accounts.get(i), trackingWaterService, trackingWaterDetailsService, trackingUserService);
+            BigMember bigMember = new BigMember(accounts.get(i), trackingWaterService, trackingWaterDetailsService, trackingUserService,iDictionaryItemService);
             Map all = bigMember.getAll(lambdaQueryWrapper_water);
             if (gameType != null)
                 all.put("gameType", tableType);
@@ -136,7 +136,7 @@ public class MemberAccountsController {
 
     @PostMapping(value = "/SelectByCondition/print")
     @ApiOperation("会员账目 打印 条件查询")
-    public Result SelectByConditionAndPrint(@RequestBody MemberSelectCondition3 memberSelectCondition, @ApiIgnore HttpServletResponse response) {
+    public void SelectByConditionAndPrint(@RequestBody MemberSelectCondition3 memberSelectCondition, @ApiIgnore HttpServletResponse response) {
         LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail = new LambdaQueryWrapper<>();
         String tableType = "";
@@ -189,7 +189,7 @@ public class MemberAccountsController {
         accounts.addAll(h);
         List<Map> data = new ArrayList<>();
         for (int i = 0; i < accounts.size(); i++) {
-            BigMember bigMember = new BigMember(accounts.get(i), trackingWaterService, trackingWaterDetailsService, trackingUserService);
+            BigMember bigMember = new BigMember(accounts.get(i), trackingWaterService, trackingWaterDetailsService, trackingUserService,iDictionaryItemService);
             Map all = bigMember.getAll(lambdaQueryWrapper_water);
             if (gameType != null)
                 all.put("gameType", tableType);
@@ -215,15 +215,15 @@ public class MemberAccountsController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Map map = new HashMap();
-
-        map.put("records", data);
-        map.put("total", accounts.size());
-        map.put("size", accounts.size());
-        map.put("current", 1);
-        map.put("pages", 1);
-        map.put("searchCount", true);
-        return ResultResponseUtil.ok().msg("所有数据").data(map);
+//        Map map = new HashMap();
+//
+//        map.put("records", data);
+//        map.put("total", accounts.size());
+//        map.put("size", accounts.size());
+//        map.put("current", 1);
+//        map.put("pages", 1);
+//        map.put("searchCount", true);
+//        return ResultResponseUtil.ok().msg("所有数据").data(map);
     }
 
     @PostMapping(value = "/SelectByCondition2")

@@ -27,6 +27,7 @@ public class BasePrint {
     public HSSFWorkbook getHSSFWorkbook(String topic, List<String> titles, List<List<String>> objects, String name) {
         HSSFWorkbook wb = new HSSFWorkbook();
         HSSFSheet sheet = wb.createSheet(topic);
+
         HSSFRow titleRow = sheet.createRow(0);
         for (int i = 0; i < titles.size(); i++) {  //生成标识栏
             titleRow.createCell(i).setCellValue(titles.get(i));
@@ -35,7 +36,7 @@ public class BasePrint {
             HSSFRow normalRow = sheet.createRow(i + 1); //第一行已被占用
             List<String> objectList = objects.get(i);
             for (int j = 0; j < objectList.size(); j++) {
-//                normalRow.createCell(j).setCellValue(objectList.get(j));
+                normalRow.createCell(j).setCellValue(objectList.get(j));
             }
         }
         return wb;
