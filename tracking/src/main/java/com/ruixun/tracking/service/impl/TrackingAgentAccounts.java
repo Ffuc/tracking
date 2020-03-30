@@ -218,7 +218,7 @@ public class TrackingAgentAccounts extends ServiceImpl<TrackingUserMapper, Track
            }
            // 靴号
            if (trackingAgencyAccountsDto.getBootId() !=null){
-               waterQueryWrapper2.lambda().eq(TrackingWater::getBootsTimes,trackingAgencyAccountsDto.getBootId());
+               waterQueryWrapper2.lambda().eq(TrackingWater::getBoots,trackingAgencyAccountsDto.getBootId());
                waterQueryWrapper2.lambda().select(TrackingWater::getWaterId);
                List<TrackingWater> trackingWaters = trackingWaterMapper.selectList(waterQueryWrapper2);
                waterId = new ArrayList<>();
@@ -302,7 +302,7 @@ public class TrackingAgentAccounts extends ServiceImpl<TrackingUserMapper, Track
                                     if (trackingUser.getUserType()!=null && trackingUser.getUserType()==1){
                                         if (trackingUser.getWashCodeRatio()!=null){
                                             RMBwashAodeAmount= RMBwashAodeAmount.add(trackingWaterDetail.getWashCodeMoney());
-                                            Earnings= Earnings.add(trackingUser.getProportion().multiply(trackingWaterDetail.getWinMoney().subtract(trackingWaterDetail.getWashCodeAmount())).subtract(trackingWaterDetail.getWashCodeMoney()));
+                                            Earnings= Earnings.add(trackingUser.getProportion().multiply(trackingWaterDetail.getWinMoney().subtract(trackingWaterDetail.getWashCodeAmount())).subtract(trackingWaterDetail.getWashCodeMoney().multiply(trackingUser.getProportion())));
                                         }
                                         //返点
                                     }else if (trackingUser.getUserType()!=null && trackingUser.getUserType()==2){
@@ -338,7 +338,7 @@ public class TrackingAgentAccounts extends ServiceImpl<TrackingUserMapper, Track
                                         if (trackingUser.getWashCodeRatio()!=null){
                                             //
                                             USDwashAodeAmount= USDwashAodeAmount.add(trackingWaterDetail.getWashCodeMoney());
-                                            Earnings= Earnings.add(trackingUser.getProportion().multiply(trackingWaterDetail.getWinMoney().subtract(trackingWaterDetail.getWashCodeAmount())).subtract(trackingWaterDetail.getWashCodeMoney()));
+                                            Earnings= Earnings.add(trackingUser.getProportion().multiply(trackingWaterDetail.getWinMoney().subtract(trackingWaterDetail.getWashCodeAmount())).subtract(trackingWaterDetail.getWashCodeMoney().multiply(trackingUser.getProportion())));
                                         }
                                         //返点
                                     }else if (trackingUser.getUserType()!=null && trackingUser.getUserType()==2){
@@ -371,11 +371,9 @@ public class TrackingAgentAccounts extends ServiceImpl<TrackingUserMapper, Track
      */
     public Map<String,Object> findCompanyAccounts(){
         //查询会员人数
-        Long oneByUserType = trackingUserMapper.findOneByUserType(0);
-        Long oneByUserType1 = trackingUserMapper.findOneByUserType(1);
-        Long oneByUserType2 = trackingUserMapper.findOneByUserType(2);
-        //查询代理人数
-        Long oneByUserType3 = oneByUserType2+oneByUserType1;
+        Long oneByUserType = trackingUserMapper.findOneByUserType();
+        //代理人数
+        Long oneByUserType1 = trackingUserMapper.findOneByCountUserType();
 
         Long onLineByUserType2 = trackingUserMapper.findOnLineByUserType(2);
         Long onLineByUserType1= trackingUserMapper.findOnLineByUserType(1);

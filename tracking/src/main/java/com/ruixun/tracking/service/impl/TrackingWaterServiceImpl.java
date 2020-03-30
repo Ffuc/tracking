@@ -57,7 +57,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
             queryWrapper_Warter.lambda().eq(TrackingWater::getTableId, gameSelectCondition.getTableId());
         }
         if (!JudgeEmpty.isEmpty(gameSelectCondition.getBootId())) {
-            queryWrapper_Warter.lambda().eq(TrackingWater::getBootsTimes, gameSelectCondition.getBootId());
+            queryWrapper_Warter.lambda().eq(TrackingWater::getBoots, gameSelectCondition.getBootId());
         }
         if (!JudgeEmpty.isEmpty(gameSelectCondition.getGameType())) {
             queryWrapper_Warter.lambda().eq(TrackingWater::getGameType, gameSelectCondition.getGameType());
@@ -152,12 +152,12 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
         }
         //输入靴号
         if (trackingAgencyAccountsDto.getBootId() != null) {
-            queryWrapper.lambda().eq(TrackingWater::getBootsTimes, trackingAgencyAccountsDto.getBootId());
+            queryWrapper.lambda().eq(TrackingWater::getBoots, trackingAgencyAccountsDto.getBootId());
         }
         //结果集过滤
         queryWrapper.lambda().select(TrackingWater::getWaterId,
                 TrackingWater::getTableId,
-                TrackingWater::getBootsTimes,
+                TrackingWater::getBoots,
                 TrackingWater::getTimes,
                 TrackingWater::getEndTime,
                 TrackingWater::getDutchOfficer,
@@ -179,7 +179,7 @@ public class TrackingWaterServiceImpl extends ServiceImpl<TrackingWaterMapper, T
             queryWrapper.lambda().eq(TrackingWater::getWaterId,waterId);
             queryWrapper.lambda().select(TrackingWater::getWaterId,
                     TrackingWater::getTableId,
-                    TrackingWater::getBootsTimes,
+                    TrackingWater::getBoots,
                     TrackingWater::getTimes,
                     TrackingWater::getResult);
             TrackingWater trackingWater = trackingWaterMapper.selectOne(queryWrapper);

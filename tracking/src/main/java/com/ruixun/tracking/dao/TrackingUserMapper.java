@@ -17,7 +17,8 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface TrackingUserMapper extends BaseMapper<TrackingUser> {
-    Long findOneByUserType(Integer UserType);
+    Long findOneByUserType();
+    long findOneByCountUserType();
     Long findOnLineByUserType(Integer UserType);
 
 }

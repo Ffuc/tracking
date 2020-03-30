@@ -9,5 +9,8 @@
         <module name="tracking" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tracking" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

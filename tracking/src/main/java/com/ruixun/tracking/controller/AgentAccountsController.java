@@ -46,25 +46,9 @@ public class AgentAccountsController {
 //    }
     @Autowired
     private ITrackingAgentAccounts iTrackingAgentAccounts;
-    //定义下注金额总
-    BigDecimal USDbetMoney = new BigDecimal(0);
-    //定义总赢
-    BigDecimal USDwashCodeAmountMAX = new BigDecimal(0);
-    //定义总洗码
-    BigDecimal USDwashCodeAmountMIN = new BigDecimal(0);
-    //总洗码费
-    BigDecimal USDwashAodeAmount = new BigDecimal(0);
 
-    //定义下注金额总
-    BigDecimal RMBbetMoney = new BigDecimal(0);
-    //定义总赢
-    BigDecimal RMBwashCodeAmountMAX = new BigDecimal(0);
-    //定义总洗码
-    BigDecimal RMBwashCodeAmountMIN = new BigDecimal(0);
-    //总洗码费
-    BigDecimal RMBwashAodeAmount = new BigDecimal(0);
 
-    @PostMapping("/findAgentcy")
+    @GetMapping("/findAgentcy")
     public Result findAgentcy(@RequestBody @RequestParam(required = false) TrackingAgencyAccountsDto trackingAgencyAccountsDto){
         IPage<Map<String, Object>> all = iTrackingAgentAccounts.getAll(trackingAgencyAccountsDto);
         return ResultResponseUtil.ok().msg("查询成功").data(all);

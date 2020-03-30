@@ -61,9 +61,6 @@ public class TrackingWaterDetails implements Serializable {
     @ApiModelProperty(value = "洗码费")
     private BigDecimal washCodeMoney;
 
-    @ApiModelProperty(value = "洗码费")
-    private BigDecimal washCodeMoney;
-
     @ApiModelProperty(value = "是否结账(0:结账 1：未结账)")
     private Integer isCheckout;
 

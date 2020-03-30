@@ -125,7 +125,7 @@ public class UserController {
     }
 
     @PostMapping("/info/deletedAgent")
-    @ApiOperation(value = "信息接口1:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码", notes = "referrer上级代理账号,account账号,username姓名,page页码")
+    @ApiOperation(value = "信息接口1-已删会员:提供条件,获得对应的结果 referrer上级代理账号,account账号,username姓名,page页码", notes = "referrer上级代理账号,account账号,username姓名,page页码")
     public Result getDeletedMemberInfo(@RequestBody Map data) {
         if (data.get("page") == null) {
             return ResultResponseUtil.ok().msg("查询失败,页码为null").data(null);
@@ -171,10 +171,10 @@ public class UserController {
             queryWrapper.eq(TrackingUser::getAccount, account);
         }
         queryWrapper.eq(TrackingUser::getUserType, 0).set(TrackingUser::getIsDelete, 1);//已被删除
-        boolean update = iTrackingUserService.update(queryWrapper);
+        boolean update = iTrackingUserService.updateOne(queryWrapper);
         Map map = new HashMap();
         map.put("result", update);
-        return ResultResponseUtil.ok().msg("已更新").data(map);
+        return ResultResponseUtil.ok().msg("操作已执行").data(map);
     }
 
     @PostMapping("/info/addAgent")
@@ -203,10 +203,9 @@ public class UserController {
         trackingUser.setCardId(agent.getCard_id());
         trackingUser.setPhone(agent.getPhone());
         boolean save = iTrackingUserService.addOne(trackingUser);
-        if (save) {
-            return ResultResponseUtil.ok().msg("操作成功").data(save);
-        }
-        return ResultResponseUtil.error().msg("操作失败").data(null);
+        Map map = new HashMap();
+        map.put("result", save);
+        return ResultResponseUtil.error().msg("操作执行").data(map);
     }
 
 

@@ -219,7 +219,7 @@ public class TrackingTableServiceImpl extends ServiceImpl<TrackingTableMapper, T
             for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
                 vipAccounts = vipAccounts+","+trackingWaterDetails.get(i1).getAccount();
             }
-            table_map.put("result",vipAccounts);
+            table_map.put("vipAccounts",vipAccounts);
             /*下右*/
             List<Map<String,Object>> table_list = new ArrayList<Map<String,Object>>();
             for (int i1 = 0; i1 < trackingWaterDetails.size(); i1++) {
