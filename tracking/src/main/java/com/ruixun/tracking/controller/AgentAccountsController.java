@@ -9,6 +9,7 @@ import com.ruixun.tracking.service.ITrackingAgentAccounts;
 import com.ruixun.tracking.service.ITrackingMemberCostService;
 import com.ruixun.tracking.service.impl.TrackingAgentAccounts;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,8 +49,9 @@ public class AgentAccountsController {
     private ITrackingAgentAccounts iTrackingAgentAccounts;
 
 
-    @GetMapping("/findAgentcy")
-    public Result findAgentcy(@RequestBody @RequestParam(required = false) TrackingAgencyAccountsDto trackingAgencyAccountsDto){
+    @PostMapping("/findAgentcy")
+    @ApiOperation("代理账目 1.代理账目表-条件查询所有信息")
+    public Result findAgentcy(@RequestBody TrackingAgencyAccountsDto trackingAgencyAccountsDto){
         IPage<Map<String, Object>> all = iTrackingAgentAccounts.getAll(trackingAgencyAccountsDto);
         return ResultResponseUtil.ok().msg("查询成功").data(all);
     }

@@ -24,5 +24,7 @@ import java.util.Map;
 public interface TrackingWaterMapper extends BaseMapper<TrackingWater> {
 
     List<Object> findTablesInfo();
+    //limit 5 根据时间
+    List<TrackingWater> findRealTimeLimit();
 
 }

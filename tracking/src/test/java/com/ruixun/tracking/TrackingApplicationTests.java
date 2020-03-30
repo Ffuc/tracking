@@ -3,8 +3,10 @@ package com.ruixun.tracking;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ruixun.tracking.dao.TrackingWaterMapper;
 import com.ruixun.tracking.entity.DictionaryItem;
 
+import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.dto.TrackingAgencyAccountsDto;
 import com.ruixun.tracking.service.IDictionaryItemService;
 import com.ruixun.tracking.service.ITrackingAgentAccounts;
@@ -61,6 +63,13 @@ public class TrackingApplicationTests {
 
         System.out.println(1);
 
+    }
+    @Autowired
+    private TrackingWaterMapper trackingWaterMapper;
+    @Test
+    public void test3(){
+        List<TrackingWater> realTimeLimit = trackingWaterMapper.findRealTimeLimit();
+        System.out.println(realTimeLimit);
     }
 
 }

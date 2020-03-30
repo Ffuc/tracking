@@ -11,4 +11,22 @@
     <select id="findOnLineByUserType" resultType="long" parameterType="integer">
         select count(state) from tracking_user where state=1 and user_type='#{userType}'
     </select>
+    <select id="findAllByStateVIP" resultType="long">
+        SELECT COUNT(user_type) FROM tracking_user WHERE state=1 AND user_type=1 OR user_type=2
+    </select>
+    <select id="findAllByStateAgency" resultType="long">
+          SELECT COUNT(user_type) FROM tracking_user WHERE state=1 AND user_type=0
+    </select>
+
+    <select id="findProfitVIP" resultType="java.util.HashMap">
+            SELECT tu.account,twd.win_money,twd.wash_code_amount,twd.wash_code_money,tu.proportion,tu.rebates_earnings FROM tracking_user AS tu
+  LEFT JOIN tracking_water_details AS twd  ON twd.account=tu.account
+  LEFT JOIN tracking_water AS tw ON twd.water_id=tw.water_id WHERE tu.user_type=0
+    </select>
+    <select id="findProfitAgency" resultType="java.util.HashMap">
+            SELECT tu.account,twd.win_money,twd.wash_code_amount,twd.wash_code_money,tu.proportion,tu.rebates_earnings FROM tracking_user AS tu
+  LEFT JOIN tracking_water_details AS twd  ON twd.account=tu.account
+  LEFT JOIN tracking_water AS tw ON twd.water_id=tw.water_id WHERE tu.user_type=1 or tu.user_type=2
+    </select>
+
 </mapper>

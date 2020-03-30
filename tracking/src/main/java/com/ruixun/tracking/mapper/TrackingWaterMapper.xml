@@ -20,4 +20,22 @@
         GROUP BY table_id
 </select>-->
  </select>
+
+    <resultMap id="trackingUserMap" type="com.ruixun.tracking.entity.dto.TrackingWaterDto">
+        <result property="waterId" column="water_id"/>
+        <result  property="tableId" column="table_id"/>
+        <result  property="gameType" column="game_type"/>
+        <result  property="profit" column="profit"/>
+        <result  property="result" column="result"/>
+        <collection property="trackingWaterDetails" ofType="com.ruixun.tracking.entity.TrackingWaterDetails" >
+            <result property="betMoney" column="bet_money"/>
+    </collection>
+    </resultMap>
+
+    <select id="findRealTimeLimit" resultMap="trackingUserMap">
+        /*select water_id,table_id,game_type,game_type,profit,bet_money from
+         tracking_water order by end_time desc limit 5*/
+           SELECT * FROM
+         tracking_water AS tw  JOIN tracking_water_details AS twd ON twd.water_id=tw.water_id
+    </select>
 </mapper>
