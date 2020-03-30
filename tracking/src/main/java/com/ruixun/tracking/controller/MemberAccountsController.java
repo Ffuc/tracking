@@ -3,6 +3,8 @@ package com.ruixun.tracking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.common.utils.ResultResponseUtil;
+
+
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
 import com.ruixun.tracking.entity.dto.MemberSelectCondition;
@@ -49,17 +51,18 @@ public class MemberAccountsController {
 
     @PostMapping(value = "/SelectByCondition")
     @ApiOperation("会员账目 条件查询")
-    public Result SelectByCondition(@RequestBody MemberSelectCondition memberSelectCondition, Integer page, Integer size) {
+    public Result SelectByCondition(@RequestBody MemberSelectCondition memberSelectCondition) {
         LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail = new LambdaQueryWrapper<>();
         String tableType = "";
         Integer gameType = memberSelectCondition.getGameType();
 
-        if (page == null) {
-            page = 1;
+        if (memberSelectCondition.getPage() == null) {
+            memberSelectCondition.setPage(1);
+
         }
-        if (size == null) {
-            size = 10;
+        if (memberSelectCondition.getSize() == null) {
+            memberSelectCondition.setPage(10);
         }
         if (memberSelectCondition.getNoteCode() != null) {//注码(币种)方式一样
             lambdaQueryWrapper_water.eq(TrackingWater::getMoneyType, memberSelectCondition.getNoteCode());
@@ -119,17 +122,17 @@ public class MemberAccountsController {
     }
 
 
-    @PostMapping(value = "/member/SelectByCondition")
-    @ApiOperation("会员账目 条件查询")
-    public Result memberSelectByCondition(@RequestBody MemberSelectCondition2 memberSelectCondition2, Integer page, Integer size) {
+    @PostMapping(value = "/SelectByCondition2")
+    @ApiOperation("会员账目-结账 条件查询")
+    public Result memberSelectByCondition(@RequestBody MemberSelectCondition2 memberSelectCondition2) {
         LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
         String tableType = "";
         Integer gameType = memberSelectCondition2.getGameType();
-        if (page == null) {
-            page = 1;
+        if (memberSelectCondition2.getPage() == null) {
+            memberSelectCondition2.setPage(1);
         }
-        if (size == null) {
-            size = 10;
+        if (memberSelectCondition2.getSize() == null) {
+            memberSelectCondition2.setSize(10);
         }
         if (memberSelectCondition2.getNoteCode() != null) {                     //注码(币种)方式一样
             lambdaQueryWrapper_water.eq(TrackingWater::getMoneyType, memberSelectCondition2.getNoteCode());
@@ -165,7 +168,7 @@ public class MemberAccountsController {
             String game_result = "";
             for (int j = 0; j < results.length; j++) {
                 String cn = iDictionaryItemService.getGameCN("game_result", Integer.valueOf(results[j]));
-                game_result += "," + cn;
+                game_result += cn + " ";
             }
             all.put("result", game_result);
             result.add(all);
@@ -174,8 +177,8 @@ public class MemberAccountsController {
         Map map = new HashMap();
         map.put("records", result);
         map.put("total", result.size());
-        map.put("size", size);
-        map.put("current", page);
+        map.put("size", 10);
+        map.put("current", 1);
         map.put("pages", 1);
         map.put("searchCount", true);
         return ResultResponseUtil.ok().msg("所有数据").data(map);

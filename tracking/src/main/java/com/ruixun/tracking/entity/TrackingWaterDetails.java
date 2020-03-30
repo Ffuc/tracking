@@ -41,7 +41,6 @@ public class TrackingWaterDetails implements Serializable {
 
     private BigDecimal insurance;
     @ApiModelProperty(value = "派彩所赢")
-
     private BigDecimal lotteryWin;
 
 
@@ -59,5 +58,13 @@ public class TrackingWaterDetails implements Serializable {
 
     @ApiModelProperty(value = "游戏类别")
     private Integer gameType;
+
+    @ApiModelProperty(value = "洗码费")
+    private BigDecimal washCodeMoney;
+
+    @ApiModelProperty(value = "是否结账(0:结账 1：未结账)")
+    private Integer isCheckout;
+
+
 
 }

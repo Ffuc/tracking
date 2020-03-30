@@ -40,7 +40,6 @@ public class TableManageController {
         LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
         trackingWater.setCreateTime(LocalDateTime.of(LocalDate.now(), LocalTime.MIN));
         trackingWater.setEndTime(LocalDateTime.now());
-        System.out.println(trackingWater);
         return tableService.findTablesInfo(trackingWater,page,size);
     }
 
@@ -60,8 +59,8 @@ public class TableManageController {
     @CrossOrigin
     @PostMapping(value = "/SelectDetailsByCondition")
     @ApiOperation("台桌管理 详情：查询该台桌的详情（根据watersId 流水号集合查询数据）")
-    public Result findTablesDetailsInfo(@RequestBody List<String> watersId){
-        System.out.println(watersId);
+    public Result findTablesDetailsInfo(List<String> watersId){
+
         return tableService.findTablesDetailsInfo(watersId);
 
     }

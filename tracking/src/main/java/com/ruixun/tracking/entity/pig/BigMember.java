@@ -74,7 +74,13 @@ public class BigMember {
      * 下注次数
      */
     public Integer betTimes(LambdaQueryWrapper<TrackingWaterDetails> lambdaUpdateWrapper) {
-        int count = trackingWaterDetailsService.count(lambdaUpdateWrapper);
+        int count = 0;
+//        if (lambdaUpdateWrapper == null) {
+//            count = trackingWaterDetailsService.count(lambdaUpdateWrapper);
+//        } else {
+//            count = trackingWaterDetailsService.count();
+//        }
+        count = trackingWaterDetailsService.count(lambdaUpdateWrapper);
         return count;
     }
 
@@ -87,6 +93,29 @@ public class BigMember {
         for (int i = 0; i < list.size(); i++) {
             betTotalMoney = betTotalMoney.add(list.get(i).getBetMoney());
         }
+        return betTotalMoney;
+    }
+
+    public Integer betTimesSelf(LambdaQueryWrapper<TrackingWaterDetails> lambdaUpdateWrapper) {
+        int count = 0;
+        if (lambdaUpdateWrapper == null)
+            lambdaUpdateWrapper = new LambdaQueryWrapper<TrackingWaterDetails>();
+        count = trackingWaterDetailsService.count(lambdaUpdateWrapper.eq(TrackingWaterDetails::getAccount, Account));
+        return count;
+    }
+
+    /**
+     * 下注总额
+     */
+    public BigDecimal betTotalMoneySelf(LambdaQueryWrapper<TrackingWaterDetails> lambdaUpdateWrapper) {
+        if (lambdaUpdateWrapper == null)
+            lambdaUpdateWrapper = new LambdaQueryWrapper<TrackingWaterDetails>();
+        List<TrackingWaterDetails> list = trackingWaterDetailsService.list(lambdaUpdateWrapper.eq(TrackingWaterDetails::getAccount, Account));
+        BigDecimal betTotalMoney = new BigDecimal(0);
+        for (int i = 0; i < list.size(); i++) {
+            betTotalMoney = betTotalMoney.add(list.get(i).getBetMoney());
+        }
+
         return betTotalMoney;
     }
 
