@@ -1,5 +1,6 @@
 package com.ruixun.tracking.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,7 +22,7 @@ import java.io.Serializable;
 public class Table implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId
     @ApiModelProperty("表的桌号")
     private String tableId;
 
@@ -32,13 +33,5 @@ public class Table implements Serializable {
 
     private String issueResult;
 
-    public Table() {
-    }
 
-    public Table(String tableId, Integer newestBootNum, Integer newestIssueNum, String issueResult) {
-        this.tableId = tableId;
-        this.newestBootNum = newestBootNum;
-        this.newestIssueNum = newestIssueNum;
-        this.issueResult = issueResult;
-    }
 }

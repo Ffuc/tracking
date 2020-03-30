@@ -1,6 +1,7 @@
 package com.ruixun.tracking.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.ruixun.tracking.common.print.MemberPrint;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.common.utils.ResultResponseUtil;
 
@@ -19,9 +20,14 @@ import com.ruixun.tracking.service.ITrackingWaterDetailsService;
 import com.ruixun.tracking.service.ITrackingWaterService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.*;
 
 /**
@@ -130,7 +136,7 @@ public class MemberAccountsController {
 
     @PostMapping(value = "/SelectByCondition/print")
     @ApiOperation("会员账目 打印 条件查询")
-    public Result SelectByConditionAndPrint(@RequestBody MemberSelectCondition3 memberSelectCondition) {
+    public Result SelectByConditionAndPrint(@RequestBody MemberSelectCondition3 memberSelectCondition, @ApiIgnore HttpServletResponse response) {
         LambdaQueryWrapper<TrackingWater> lambdaQueryWrapper_water = new LambdaQueryWrapper<>();
         LambdaQueryWrapper<TrackingWaterDetails> lambdaQueryWrapper_detail = new LambdaQueryWrapper<>();
         String tableType = "";
@@ -188,6 +194,26 @@ public class MemberAccountsController {
             if (gameType != null)
                 all.put("gameType", tableType);
             data.add(all);
+        }
+        MemberPrint memberPrint = new MemberPrint();
+        HSSFWorkbook wb = memberPrint.printXlsx(data);
+        String codedFileName = "奖金制度";
+        response.setHeader("Content-Disposition", "attachment;filename=" + codedFileName + ".xlsx");
+        // 响应类型,编码
+        response.setContentType("application/octet-stream;charset=UTF-8");
+        // 形成输出流
+        OutputStream osOut = null;
+        try {
+            osOut = response.getOutputStream();
+            // 将指定的字节写入此输出流
+            wb.write(osOut);
+            // 刷新此输出流并强制将所有缓冲的输出字节被写出
+            osOut.flush();
+            // 关闭流
+            osOut.close();
+            wb.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         Map map = new HashMap();
 
