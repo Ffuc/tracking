@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6f50c9de-8eda-44ae-a546-ba340e656093" name="Default Changelist" comment="流水铺号 service 修改">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/filter/LoginFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/print/MemberPrint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/ManagerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/StatementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/StatementMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/Statement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/Manager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/MemberSelectCondition3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/SelectStatementDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/StatementMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/IStatementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/StatementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/common/check/PageCheck.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/common/filter/LoginFilter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/ManagerController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/TrackingManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/GameSelectCondition2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/Manager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/UserParams2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xls/hello.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/check/PageCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/check/PageCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/AgentAccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/AgentAccountsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/MemberAccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/MemberAccountsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TableManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TableManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingUserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingWaterDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingWaterDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/pig/BigWater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/pig/BigWater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/TrackingUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/TrackingUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingWaterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingWaterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingAgentAccounts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingAgentAccounts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingTableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ruixun/tracking/service/ITrackingWaterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ruixun/tracking/service/ITrackingWaterServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/tracking.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/TrackingApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/TrackingApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/AgentAccountsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/AgentAccountsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/MemberAccountsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/MemberAccountsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/TableManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/TableManageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/TestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/TrackingWater.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/TrackingWater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/TrackingWaterDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/TrackingWaterDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/VO/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/VO/Agent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/GameSelectCondition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/GameSelectCondition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/MemberSelectCondition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/MemberSelectCondition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/MemberSelectCondition2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/dto/MemberSelectCondition2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/pig/BigMember.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/pig/BigMember.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/pig/BigWater.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/entity/pig/BigWater.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/IDictionaryItemService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/IDictionaryItemService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/ITrackingTableService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/ITrackingTableService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/ITrackingUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/ITrackingUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/ITrackingWaterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/ITrackingWaterService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/DictionaryItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/DictionaryItemServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingAgentAccounts.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingAgentAccounts.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingTableServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingUserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.ruixun.tracking.service.ITrackingWaterServiceTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.ruixun.tracking.service.ITrackingWaterServiceTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/ruixun/tracking/service/ITrackingWaterServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/ruixun/tracking/service/ITrackingWaterServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/tracking-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tracking.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tracking.iml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1704267511">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="9" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="4" />
+          <entry key="project.open.time.2" value="3" />
+          <entry key="project.open.time.50" value="1" />
+          <entry key="project.open.time.53" value="1" />
+          <entry key="project.open.time.55" value="1" />
+          <entry key="project.open.time.64" value="1" />
+          <entry key="project.opened" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="20" />
+          <entry key="java" value="129" />
+          <entry key="md" value="1" />
+          <entry key="xml" value="8" />
+          <entry key="yml" value="14" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="20" />
+          <entry key="JAVA" value="129" />
+          <entry key="Markdown" value="1" />
+          <entry key="XML" value="8" />
+          <entry key="YAML" value="14" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="6" />
+          <entry key="java" value="9509" />
+          <entry key="txt" value="44" />
+          <entry key="xml" value="402" />
+          <entry key="yml" value="30" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="9509" />
+          <entry key="PLAIN_TEXT" value="50" />
+          <entry key="SQL" value="8" />
+          <entry key="XML" value="394" />
+          <entry key="YAML" value="30" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="36" column="109" selection-start-line="36" selection-start-column="109" selection-end-line="36" selection-end-column="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/AgentAccountsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="428">
+              <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingAgentAccounts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TableManageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-298">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingAgentAccounts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="373" column="55" selection-start-line="373" selection-start-column="55" selection-end-line="373" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getAll#0;class#TrackingAgentAccounts#0" />
+                <element signature="method#getTrackingTaterDetailss#0;class#TrackingAgentAccounts#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingUserMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingTableServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-216">
+              <caret line="21" column="62" lean-forward="true" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/TrackingUserMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="83" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/MemberAccountsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1795">
+              <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>connector</find>
+      <find>put</find>
+      <find>bet_money</find>
+      <find>=====</find>
+      <find>referrer</find>
+      <find>------</find>
+      <find>washCodeAmountMIN</find>
+      <find>tom</find>
+      <find>spring-b</find>
+      <find>trackingWaterDetails</find>
+      <find>rebates_earnings</find>
+      <find>account</find>
+      <find>getTrackingTaterDetailss</find>
+      <find>userqueryWrapper</find>
+      <find>this</find>
+      <find>RMBwashCodeAmountMIN</find>
+      <find>---</find>
+      <find>USDwashAodeAmount</find>
+      <find>USDwashCodeAmountMIN</find>
+      <find>USD</find>
+      <find>RMB</find>
+      <find>Earnings</find>
+      <find>trackingUser.</find>
+      <find>trackingUser</find>
+      <find>===</find>
+      <find>userQueryWrapper1</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/AgentcyAccountsDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingAgentAccounts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingWaterDetailsMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingWaterMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/TrackingWaterMapper.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ruixun/tracking/BaseTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/TrackingApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/MemberAccountsController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ruixun/tracking/TrackingApplicationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/TrackingAgencyAccountsDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TrackingWaterDetailsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingWater.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/utils/doExcel.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/utils/ExcelUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingWaterDetails.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/print/MemberPrint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/pig/BigWater.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingWaterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/AgentAccountsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingUserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/TrackingUserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingAgentAccounts.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\MAVEN_PRJECT\maven_repository_2" />
+        <option name="mavenHome" value="D:/TomCatPackage/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="D:\TomCatPackage\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="tracking" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="tracking" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="152" />
+    <option name="y" value="529" />
+    <option name="width" value="1725" />
+    <option name="height" value="840" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Mybatis</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>MybatisMapperXmlInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="pig" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tracking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="tracking" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585507903114" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.TrackingApplication">
+    <configuration name="BaseTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tracking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ruixun.tracking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ruixun.tracking" />
+      <option name="MAIN_CLASS_NAME" value="com.ruixun.tracking.BaseTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BaseTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tracking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ruixun.tracking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ruixun.tracking" />
+      <option name="MAIN_CLASS_NAME" value="com.ruixun.tracking.BaseTest" />
+      <option name="METHOD_NAME" value="test2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BaseTest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tracking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ruixun.tracking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ruixun.tracking" />
+      <option name="MAIN_CLASS_NAME" value="com.ruixun.tracking.BaseTest" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BaseTest.test4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tracking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ruixun.tracking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ruixun.tracking" />
+      <option name="MAIN_CLASS_NAME" value="com.ruixun.tracking.BaseTest" />
+      <option name="METHOD_NAME" value="test4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrackingApplicationTests.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tracking" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ruixun.tracking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ruixun.tracking" />
+      <option name="MAIN_CLASS_NAME" value="com.ruixun.tracking.TrackingApplicationTests" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TrackingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="tracking" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ruixun.tracking.TrackingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.TrackingApplication" />
+      <item itemvalue="JUnit.BaseTest.test2" />
+      <item itemvalue="JUnit.BaseTest.test" />
+      <item itemvalue="JUnit.BaseTest.test3" />
+      <item itemvalue="JUnit.BaseTest.test4" />
+      <item itemvalue="JUnit.TrackingApplicationTests.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TrackingApplicationTests.test" />
+        <item itemvalue="JUnit.BaseTest.test4" />
+        <item itemvalue="JUnit.BaseTest.test" />
+        <item itemvalue="JUnit.BaseTest.test3" />
+        <item itemvalue="JUnit.BaseTest.test2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f50c9de-8eda-44ae-a546-ba340e656093" name="Default Changelist" comment="" />
+      <created>1585364993503</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585364993503</updated>
+      <workItem from="1585364994996" duration="29392000" />
+      <workItem from="1585406911930" duration="999000" />
+      <workItem from="1585408473465" duration="72000" />
+      <workItem from="1585408574116" duration="4399000" />
+      <workItem from="1585445305965" duration="4132000" />
+      <workItem from="1585449905871" duration="16609000" />
+      <workItem from="1585469740854" duration="27342000" />
+      <workItem from="1585499072180" duration="8137000" />
+      <workItem from="1585508004200" duration="431000" />
+      <workItem from="1585530491170" duration="364000" />
+      <workItem from="1585536600291" duration="161000" />
+      <workItem from="1585536764903" duration="1833000" />
+    </task>
+    <task id="LOCAL-00001" summary="流水铺号 service 修改">
+      <created>1585373486286</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585373486286</updated>
+    </task>
+    <task id="LOCAL-00002" summary="流水铺号 service 修改">
+      <created>1585448996164</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585448996164</updated>
+    </task>
+    <task id="LOCAL-00003" summary="流水铺号 service 修改">
+      <created>1585451108603</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585451108603</updated>
+    </task>
+    <task id="LOCAL-00004" summary="流水铺号 service 修改">
+      <created>1585505717610</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585505717610</updated>
+    </task>
+    <task id="LOCAL-00005" summary="2020年3月30日02:21:52">
+      <created>1585506134590</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585506134590</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 17h 09m 50s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 18h 59m 07s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 00m 04s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 00m 39s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 10m 52s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 11m 20s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 14m 33s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 15m 05s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 19h 15m 27s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TrackingApplicationTests_test - 2020.03.29 at 20h 35m 00s.xml">
+      <configuration name="TrackingApplicationTests.test" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="94156000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="UI Designer" order="1" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Web" order="4" side_tool="true" />
+      <window_info id="Designer" order="5" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23015021" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.4199328" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5037554" side_tool="true" weight="0.45576707" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.28779396" />
+      <window_info anchor="bottom" id="Java Enterprise" order="3" weight="0.32922733" />
+      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Spring" order="6" weight="0.32922733" />
+      <window_info anchor="bottom" id="Message" order="7" />
+      <window_info anchor="bottom" id="Find" order="8" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.49624464" visible="true" weight="0.27211645" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.28555432" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="13" weight="0.32922733" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="right" id="BPMNPalette" order="1" />
+      <window_info anchor="right" id="Maven Projects" order="2" weight="0.3299356" />
+      <window_info anchor="right" id="Database" order="3" weight="0.3299356" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Bean Validation" order="6" weight="0.3299356" />
+      <window_info anchor="right" id="Palette" order="7" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="8" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="9" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="10" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="流水铺号 service 修改" />
+    <MESSAGE value="2020年3月30日02:21:52" />
+    <option name="LAST_COMMIT_MESSAGE" value="2020年3月30日02:21:52" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="userQueryWrapper" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ruixun/tracking/service/IDictionaryItemServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="193" selection-start-line="193" selection-end-line="193" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar!/org/springframework/aop/framework/ReflectiveMethodInvocation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-tx/5.2.4.RELEASE/spring-tx-5.2.4.RELEASE.jar!/org/springframework/transaction/interceptor/TransactionAspectSupport.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="232" selection-start-line="232" selection-end-line="232" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-tx/5.2.4.RELEASE/spring-tx-5.2.4.RELEASE.jar!/org/springframework/transaction/interceptor/TransactionInterceptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar!/org/springframework/aop/target/SingletonTargetSource.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/conditions/Wrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/conditions/AbstractLambdaWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/conditions/query/QueryWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/conditions/interfaces/Compare.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Number.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/conditions/query/LambdaQueryWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/conditions/AbstractWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ruixun/tracking/TrackingApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingBootServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="18" column="90" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/com/baomidou/mybatis-plus-core/3.1.0/mybatis-plus-core-3.1.0.jar!/com/baomidou/mybatisplus/core/metadata/IPage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/math/BigDecimal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="219" column="13" selection-start-line="219" selection-start-column="13" selection-end-line="219" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-web/5.2.4.RELEASE/spring-web-5.2.4.RELEASE.jar!/org/springframework/web/bind/annotation/RequestParam.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/MemberSelectCondition2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/springframework/spring-aop/5.2.4.RELEASE/spring-aop-5.2.4.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1536">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/AgentcyAccountsDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/AgentSelectCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingWater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1728">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/apache/poi/poi/3.17/poi-3.17.jar!/org/apache/poi/hssf/usermodel/HSSFCellStyle.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/MAVEN_PRJECT/maven_repository_2/org/apache/poi/poi/3.17/poi-3.17.jar!/org/apache/poi/ss/usermodel/CellStyle.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3336">
+          <caret line="139" column="21" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/dto/TrackingAgencyAccountsDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2904">
+          <caret line="185" column="19" selection-start-line="185" selection-start-column="19" selection-end-line="185" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/utils/ExcelUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/TrackingApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#341#342#0" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/DictionaryItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="29" column="83" selection-start-line="29" selection-start-column="83" selection-end-line="29" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/DictionaryTableServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/pig/BigMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2496">
+          <caret line="115" column="57" selection-start-line="115" selection-start-column="57" selection-end-line="115" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingWaterDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/common/print/MemberPrint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/pig/BigWater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="71" column="37" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TrackingWaterDetailsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingWaterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/entity/TrackingManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/TableManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-298">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/MemberAccountsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1795">
+          <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/controller/AgentAccountsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="52" column="67" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/ITrackingAgentAccounts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingWaterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="36" column="109" selection-start-line="36" selection-start-column="109" selection-end-line="36" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingAgentAccounts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="373" column="55" selection-start-line="373" selection-start-column="55" selection-end-line="373" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getAll#0;class#TrackingAgentAccounts#0" />
+            <element signature="method#getTrackingTaterDetailss#0;class#TrackingAgentAccounts#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/dao/TrackingUserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/mapper/TrackingUserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="83" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ruixun/tracking/service/impl/TrackingTableServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="21" column="62" lean-forward="true" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8 (1)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>tracking</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8 (1)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.netzwerg:paleo-core:0.11.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

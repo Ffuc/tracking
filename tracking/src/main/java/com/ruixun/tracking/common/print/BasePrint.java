@@ -35,14 +35,11 @@ public class BasePrint {
             HSSFRow normalRow = sheet.createRow(i + 1); //第一行已被占用
             List<String> objectList = objects.get(i);
             for (int j = 0; j < objectList.size(); j++) {
-                normalRow.createCell(j).setCellValue(objectList.get(j));
+//                normalRow.createCell(j).setCellValue(objectList.get(j));
             }
         }
         return wb;
     }
 
-    public void print(String topic, List<String> titles, List<List> objects, String targetPath) {
-
-    }
 
 }

@@ -30,4 +30,5 @@ public interface ITrackingWaterService extends IService<TrackingWater> {
      * 通过waterId拿到moneyType
      */
     Integer getMoneyType(String waterId);
+    TrackingWater waterDetails(String waterId);
 }
