@@ -37,4 +37,7 @@ public class MemberSelectCondition implements Serializable {
     @ApiModelProperty("下注方式")
     private Integer betWay;
 
+    private Integer page;
+    private Integer size;
+
 }

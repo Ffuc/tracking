@@ -1,16 +1,12 @@
 package com.ruixun.tracking.entity.pig;
 
-import com.baomidou.mybatisplus.annotation.TableId;
+
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ruixun.tracking.entity.TrackingUser;
 import com.ruixun.tracking.entity.TrackingWater;
 import com.ruixun.tracking.entity.TrackingWaterDetails;
-import com.ruixun.tracking.service.ITrackingUserService;
 import com.ruixun.tracking.service.ITrackingWaterDetailsService;
 import com.ruixun.tracking.service.ITrackingWaterService;
-import io.swagger.annotations.ApiModelProperty;
-import org.apache.commons.collections.map.MultiKeyMap;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -108,23 +104,32 @@ public class BigWater {
         lambdaQueryWrapper.eq(TrackingWaterDetails::getWaterId, waterId);
         List<TrackingWaterDetails> list = trackingWaterDetailsService.list(lambdaQueryWrapper);
         for (int i = 0; i < list.size(); i++) {
-            switch (list.get(i).getBetTarget()) {
+            int target = list.get(i).getBetTarget();
+            switch (target) {
                 case 1:
-                    z1.add(list.get(i).getBetMoney());
+                    z1 = z1.add(list.get(i).getBetMoney());
+                    break;
                 case 2:
-                    z2.add(list.get(i).getBetMoney());
+                    z2 = z2.add(list.get(i).getBetMoney());
+                    break;
                 case 3:
-                    z3.add(list.get(i).getBetMoney());
+                    z3 = z3.add(list.get(i).getBetMoney());
+                    break;
                 case 4:
-                    z4.add(list.get(i).getBetMoney());
+                    z4 = z4.add(list.get(i).getBetMoney());
+                    break;
                 case 5:
-                    z5.add(list.get(i).getBetMoney());
+                    z5 = z5.add(list.get(i).getBetMoney());
+                    break;
                 case 6:
-                    z6.add(list.get(i).getBetMoney());
+                    z6 = z6.add(list.get(i).getBetMoney());
+                    break;
                 case 7:
-                    z7.add(list.get(i).getBetMoney());
+                    z7 = z7.add(list.get(i).getBetMoney());
+                    break;
                 case 8:
-                    z8.add(list.get(i).getBetMoney());
+                    z8 = z8.add(list.get(i).getBetMoney());
+                    break;
             }
 
         }
@@ -140,6 +145,7 @@ public class BigWater {
     }
 
     public Map getAll() {
+
         Map map = new HashMap();
         map.put("waterId", waterId);
         map.put("tableId", tableId);

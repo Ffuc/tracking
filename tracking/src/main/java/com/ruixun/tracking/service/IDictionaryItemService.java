@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.ruixun.tracking.common.utils.Result;
 import com.ruixun.tracking.entity.DictionaryItem;
 
+import java.util.List;
+
 /**
  * <p>
  * 字典类型条目表 服务类
@@ -15,5 +17,9 @@ import com.ruixun.tracking.entity.DictionaryItem;
  */
 public interface IDictionaryItemService extends IService<DictionaryItem> {
     Result getGameType();
+
+    String getGameCN(String code, int index);
+
+    List<DictionaryItem> getTypeList(String code);
 
 }
